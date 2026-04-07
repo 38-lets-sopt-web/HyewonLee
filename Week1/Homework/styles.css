@@ -41,12 +41,13 @@
 /* header 밑 영역 */
 .content_area {
   display: flex;
-  margin-top: 120px;
   gap: 70px;
   width: 100%;
   height: 2000px;
+
   font-size: 20px;
   font-weight: 450;
+  /* 부모에 overflow 안 넣어야 nav의 sticky 작동 */
 }
 
 .nav {
@@ -114,10 +115,14 @@
   background-color: #555555;
 }
 
-.photo {
-  margin-top: 30px;
+.main {
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
+  margin-top: 120px;
+  gap: 20px;
   width: 100%;
-  /* 여긴 왜 height 지정이 안될까 */
 
   font-size: 22px;
   font-weight: 550;
@@ -126,8 +131,8 @@
 .grid {
   display: grid;
   width: 80%;
-  height: 40%;
-  margin-top: 20px;
+  height: 60%;
+  /* 사진 조절하고 싶은데 어디서 지정하지.. */
   grid-template-areas:
     "a b c c"
     "d d d e"
@@ -159,4 +164,56 @@
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+}
+
+.photo {
+  width: 80%;
+  height: 200px;
+  overflow: hidden;
+  /* 스크롤 스냅 적용 */
+  scroll-snap-type: x mandatory;
+
+  background-color: #333333;
+}
+/* 스크롤 안보이게 */
+.photo::-webkit-scrollbar {
+  display: none;
+}
+
+.list {
+  display: flex;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+  gap: 10px;
+
+  /* 스크롤 위치 맞춤 */
+  scroll-snap-align: start;
+}
+
+.list img {
+  width: 100%;
+  height: 100%;
+}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* 전체의 절반이 이동해서 반복되도록 */
+    transform: translateX(-50%);
+  }
+}
+.photo:hover .list {
+  /* list 중지시키려면 부모인 photo를 hover */
+  animation-play-state: paused;
+}
+/* 이미지가 확대될 때 넘어가는 부분 자르기 */
+.img_box {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 30px;
+}
+.list img:hover {
+  transform: scale(1.05);
 }
