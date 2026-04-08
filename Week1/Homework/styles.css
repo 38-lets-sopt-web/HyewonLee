@@ -217,3 +217,55 @@
 .list img:hover {
   transform: scale(1.05);
 }
+
+.interest {
+  /* 여기에 반응형 */
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  border-radius: 15px;
+  background-color: #8a8a8a;
+  gap: 10px;
+}
+.card img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+
+/* title이랑 btn */
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 16px;
+}
+.buttonbox {
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+  color: gray;
+  margin-bottom: 20px;
+}
+.btn_good {
+  display: flex;
+  width: 80px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: rgb(195, 239, 255);
+
+  align-items: center;
+  justify-content: center;
+}
+.btn_bad {
+  display: flex;
+  width: 80px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: #ffbbbb;
+
+  align-items: center;
+  justify-content: center;
+}
