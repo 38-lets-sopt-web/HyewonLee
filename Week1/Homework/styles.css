@@ -20,6 +20,7 @@
 
   align-items: center;
   justify-content: space-between;
+  z-index: 1000;
 }
 
 .radius_img {
@@ -41,10 +42,8 @@
 /* header 밑 영역 */
 .content_area {
   display: flex;
-  gap: 70px;
-  width: 100%;
-  height: 2000px;
-
+  gap: 90px;
+  width: 90%;
   font-size: 20px;
   font-weight: 450;
   /* 부모에 overflow 안 넣어야 nav의 sticky 작동 */
@@ -55,9 +54,9 @@
   flex-direction: column;
   position: sticky;
 
-  top: 120px;
-  left: 30px;
-  width: 15%;
+  top: 140px;
+  left: 40px;
+  width: 350px;
   height: 300px;
   gap: 10px;
 
@@ -72,7 +71,7 @@
   width: 100%;
   height: 60px;
 
-  padding: 10px 10px;
+  padding: 15px 15px;
   box-sizing: border-box;
   border-radius: 10px 10px 0 0;
 
@@ -88,7 +87,7 @@
   width: 100%;
   height: 60px;
 
-  padding: 10px 10px;
+  padding: 15px 15px;
   box-sizing: border-box;
   border-radius: 10px 10px 10px 10px;
 
@@ -104,7 +103,7 @@
   width: 100%;
   height: 60px;
 
-  padding: 10px 10px;
+  padding: 15px 15px;
   box-sizing: border-box;
   border-radius: 0 0 10px 10px;
 
@@ -120,7 +119,7 @@
   flex-direction: column;
 
   overflow: auto;
-  margin-top: 120px;
+  margin-top: 140px;
   gap: 20px;
   width: 100%;
 
@@ -130,7 +129,7 @@
 
 .grid {
   display: grid;
-  width: 80%;
+  width: 90%;
   height: 60%;
   /* 사진 조절하고 싶은데 어디서 지정하지.. */
   grid-template-areas:
@@ -167,7 +166,7 @@
 }
 
 .photo {
-  width: 80%;
+  width: 90%;
   height: 200px;
   overflow: hidden;
   /* 스크롤 스냅 적용 */
@@ -219,7 +218,9 @@
 }
 
 .interest {
-  /* 여기에 반응형 */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 .card {
   display: flex;
@@ -245,11 +246,12 @@
   flex-direction: column;
   gap: 10px;
   margin-left: 16px;
+  font-size: 20px;
 }
 .buttonbox {
   display: flex;
   gap: 10px;
-  font-size: 18px;
+  font-size: 17px;
   color: gray;
   margin-bottom: 20px;
 }
@@ -278,4 +280,23 @@
 }
 .btn_bad:hover {
   background-color: #ff9999;
+}
+
+.message {
+  width: 90%;
+  box-sizing: border-box;
+  padding-left: 30px;
+  border-radius: 30px;
+  background-color: #afafaf;
+}
+p {
+  font-size: 20px;
+  font-weight: 450;
+}
+/* 가상 요소 */
+p::before {
+  content: "🔈";
+}
+p::after {
+  content: "✅";
 }
