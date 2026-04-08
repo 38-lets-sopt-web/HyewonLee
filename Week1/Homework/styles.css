@@ -47,6 +47,7 @@
   font-size: 20px;
   font-weight: 450;
   /* 부모에 overflow 안 넣어야 nav의 sticky 작동 */
+  margin-top: 100px;
 }
 
 .nav {
@@ -114,12 +115,20 @@
   background-color: #555555;
 }
 
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+.link:visited {
+  color: inherit;
+}
+
 .main {
   display: flex;
   flex-direction: column;
 
   overflow: auto;
-  margin-top: 140px;
+  margin-top: 40px;
   gap: 20px;
   width: 100%;
 
@@ -130,13 +139,13 @@
 .grid {
   display: grid;
   width: 90%;
-  height: 60%;
   /* 사진 조절하고 싶은데 어디서 지정하지.. */
   grid-template-areas:
     "a b c c"
     "d d d e"
     "d d d f";
   grid-gap: 5px;
+  margin-top: 20px;
 }
 .item1 {
   grid-area: a;
@@ -169,6 +178,7 @@
   width: 90%;
   height: 200px;
   overflow: hidden;
+  margin-top: 20px;
   /* 스크롤 스냅 적용 */
   scroll-snap-type: x mandatory;
 
@@ -221,6 +231,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  margin-top: 20px;
 }
 .card {
   display: flex;
@@ -285,9 +296,10 @@
 .message {
   width: 90%;
   box-sizing: border-box;
-  padding-left: 30px;
+  padding: 10px 0 10px 30px;
   border-radius: 30px;
   background-color: #afafaf;
+  margin-top: 20px;
 }
 p {
   font-size: 20px;
