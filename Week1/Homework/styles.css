@@ -37,7 +37,7 @@
 
 .up:hover {
   transform: translateY(-5px);
-  filter: opacity(30%);
+  filter: invert(100%);
 }
 
 /* header 밑 영역 */
