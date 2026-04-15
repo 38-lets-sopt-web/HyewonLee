@@ -207,6 +207,7 @@ nav {
   /* list 중지시키려면 부모인 photo를 hover */
   animation-play-state: paused;
 }
+
 /* 이미지가 확대될 때 넘어가는 부분 자르기 */
 .img_box {
   width: 200px;
@@ -257,6 +258,10 @@ nav {
   font-size: 17px;
   color: gray;
   margin-bottom: 20px;
+}
+button {
+  all: unset;
+  cursor: pointer;
 }
 .btn_good {
   display: flex;
