@@ -112,9 +112,6 @@ nav {
   text-decoration: none;
   color: inherit;
 }
-.link:visited {
-  color: inherit;
-}
 
 .main {
   display: flex;
