@@ -19,21 +19,21 @@
       <h3>검색 필터</h3>
       <form>
         <div class="filter-title">
-          <label>제목</label>
-          <input type="text" />
+          <label for="search-title">제목</label>
+          <input type="text" name="search-title" id="search-title" />
         </div>
 
         <div class="filter-dropdown">
-          <label>유형</label>
-          <select name="type">
+          <label for="search-type">유형</label>
+          <select id="search-type" name="search-type">
             <option value="all">전체</option>
           </select>
-          <label>카테고리</label>
-          <select name="category">
+          <label for="search-category">카테고리</label>
+          <select id="search-category" name="search-category">
             <option value="all">전체</option>
           </select>
-          <label>결제수단</label>
-          <select name="payment">
+          <label for="search-payment">결제수단</label>
+          <select id="search-payment" name="search-payment">
             <option value="all">전체</option>
           </select>
         </div>
@@ -46,8 +46,7 @@
     <section class="table">
       <div>
         <div class="date-dropdown">
-          <label>유형</label>
-          <select name="type">
+          <select name="filter-date">
             <option value="default">날짜 내림차순</option>
           </select>
         </div>
@@ -56,7 +55,8 @@
       </div>
       <table>
         <thead>
-          <input type="checkbox" name="" value="" />
+          <!-- 전체 헤더 체크박스 -->
+          <th><input type="checkbox" name="chkAll" id="chkAll" /></th>
           <th>제목</th>
           <th>금액</th>
           <th>날짜</th>
@@ -74,5 +74,52 @@
         </tfoot>
       </table>
     </section>
+
+    <!-- 내역 추가 모달 -->
+    <div class="add-modal">
+      <div class="modal-header">
+        <h3>내역 추가</h3>
+        <span class="close">&times;</span>
+      </div>
+      <form>
+        <!-- 제목 -->
+        <label for="add-title">제목</label>
+        <input type="text" name="add-title" id="add-title" />
+
+        <!-- 유형과 지출 -->
+        <div class="add-form-row">
+          <div class="add-type">
+            <label for="add-type">유형</label>
+            <select id="add-type" name="add-type">
+              <option value="minus">지출 (-)</option>
+            </select>
+          </div>
+          <div class="add-amount">
+            <input type="text" name="add-amount" id="add-amount" />
+          </div>
+        </div>
+
+        <!-- 날짜 -->
+        <label for="add-date">날짜</label>
+        <input type="date" id="add-date" name="add-date" />
+
+        <!-- 카테고리와 결제수단 -->
+        <div class="add-form-row">
+          <div class="add-category">
+            <label for="add-category">카테고리</label>
+            <select id="add-category" name="add-category">
+              <option value="select">선택</option>
+            </select>
+          </div>
+          <div class="add-payment">
+            <label for="add-payment">결제수단</label>
+            <select id="add-payment" name="add-payment">
+              <option value="select">선택</option>
+            </select>
+            <button type="button">추가</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
