@@ -13,5 +13,33 @@
       <h3>이혜원의 가계부</h3>
       <p>SOPT 38th WEB</p>
     </header>
+
+    <!-- 검색 필터 -->
+    <section class="filter">
+      <h3>검색 필터</h3>
+      <form>
+        <div class="form-title">
+          <label>제목</label>
+          <input type="text" />
+        </div>
+
+        <div class="form-dropdown">
+          <label>유형</label>
+          <select name="type">
+            <option value="all">전체</option>
+          </select>
+          <label>카테고리</label>
+          <select name="category">
+            <option value="all">전체</option>
+          </select>
+          <label>결제수단</label>
+          <select name="payment">
+            <option value="all">전체</option>
+          </select>
+        </div>
+        <button type="submit">적용</button>
+        <button type="reset">초기화</button>
+      </form>
+    </section>
   </body>
 </html>
