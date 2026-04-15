@@ -17,23 +17,23 @@
     <!-- 검색 필터 -->
     <section class="filter">
       <h3>검색 필터</h3>
-      <form>
+      <form id="filter-form">
         <div class="filter-title">
           <label for="search-title">제목</label>
-          <input type="text" name="search-title" id="search-title" />
+          <input type="text" name="title" id="search-title" />
         </div>
 
         <div class="filter-dropdown">
           <label for="search-type">유형</label>
-          <select id="search-type" name="search-type">
+          <select id="search-type" name="type">
             <option value="all">전체</option>
           </select>
           <label for="search-category">카테고리</label>
-          <select id="search-category" name="search-category">
+          <select id="search-category" name="category">
             <option value="all">전체</option>
           </select>
           <label for="search-payment">결제수단</label>
-          <select id="search-payment" name="search-payment">
+          <select id="search-payment" name="payment">
             <option value="all">전체</option>
           </select>
         </div>
@@ -43,7 +43,7 @@
     </section>
 
     <!-- 표 -->
-    <section class="table">
+    <section class="expense-table">
       <div>
         <div class="date-dropdown">
           <select name="filter-date">
@@ -51,17 +51,19 @@
           </select>
         </div>
         <button type="button">선택 삭제</button>
-        <button type="button">추가</button>
+        <button type="submit">추가</button>
       </div>
       <table>
         <thead>
-          <!-- 전체 헤더 체크박스 -->
-          <th><input type="checkbox" name="chkAll" id="chkAll" /></th>
-          <th>제목</th>
-          <th>금액</th>
-          <th>날짜</th>
-          <th>카테고리</th>
-          <th>결제수단</th>
+          <tr>
+            <!-- 전체 헤더 체크박스 -->
+            <th><input type="checkbox" name="chkAll" id="chkAll" /></th>
+            <th>제목</th>
+            <th>금액</th>
+            <th>날짜</th>
+            <th>카테고리</th>
+            <th>결제수단</th>
+          </tr>
         </thead>
         <tbody>
           <!-- 여기에 데이터 불러와져야!! -->
@@ -81,43 +83,44 @@
         <h3>내역 추가</h3>
         <span class="close">&times;</span>
       </div>
-      <form>
+      <form id="add-form">
         <!-- 제목 -->
         <label for="add-title">제목</label>
-        <input type="text" name="add-title" id="add-title" />
+        <input type="text" name="title" id="add-title" />
 
         <!-- 유형과 지출 -->
         <div class="add-form-row">
           <div class="add-type">
             <label for="add-type">유형</label>
-            <select id="add-type" name="add-type">
+            <select id="add-type" name="type">
               <option value="minus">지출 (-)</option>
             </select>
           </div>
           <div class="add-amount">
-            <input type="text" name="add-amount" id="add-amount" />
+            <label for="add-amount">금액 (숫자만)</label>
+            <input type="number" name="amount" id="add-amount" />
           </div>
         </div>
 
         <!-- 날짜 -->
         <label for="add-date">날짜</label>
-        <input type="date" id="add-date" name="add-date" />
+        <input type="date" id="add-date" name="date" />
 
         <!-- 카테고리와 결제수단 -->
         <div class="add-form-row">
           <div class="add-category">
             <label for="add-category">카테고리</label>
-            <select id="add-category" name="add-category">
+            <select id="add-category" name="category">
               <option value="select">선택</option>
             </select>
           </div>
           <div class="add-payment">
             <label for="add-payment">결제수단</label>
-            <select id="add-payment" name="add-payment">
+            <select id="add-payment" name="payment">
               <option value="select">선택</option>
             </select>
-            <button type="button">추가</button>
           </div>
+          <button type="button">추가</button>
         </div>
       </form>
     </div>
