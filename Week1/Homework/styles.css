@@ -301,10 +301,10 @@ p {
   font-weight: 450;
 }
 /* 가상 요소 */
-p::before {
+.message p::before {
   content: "🔈";
 }
-p::after {
+.message p::after {
   content: "✅";
 }
 
