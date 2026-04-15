@@ -18,12 +18,12 @@
     <section class="filter">
       <h3>검색 필터</h3>
       <form>
-        <div class="form-title">
+        <div class="filter-title">
           <label>제목</label>
           <input type="text" />
         </div>
 
-        <div class="form-dropdown">
+        <div class="filter-dropdown">
           <label>유형</label>
           <select name="type">
             <option value="all">전체</option>
@@ -40,6 +40,39 @@
         <button type="submit">적용</button>
         <button type="reset">초기화</button>
       </form>
+    </section>
+
+    <!-- 표 -->
+    <section class="table">
+      <div>
+        <div class="date-dropdown">
+          <label>유형</label>
+          <select name="type">
+            <option value="default">날짜 내림차순</option>
+          </select>
+        </div>
+        <button type="button">선택 삭제</button>
+        <button type="button">추가</button>
+      </div>
+      <table>
+        <thead>
+          <input type="checkbox" name="" value="" />
+          <th>제목</th>
+          <th>금액</th>
+          <th>날짜</th>
+          <th>카테고리</th>
+          <th>결제수단</th>
+        </thead>
+        <tbody>
+          <!-- 여기에 데이터 불러와져야!! -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>total</td>
+            <td id="total"></td>
+          </tr>
+        </tfoot>
+      </table>
     </section>
   </body>
 </html>
