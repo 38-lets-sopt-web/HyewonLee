@@ -70,6 +70,13 @@ nav {
   border-radius: 10px;
 }
 
+#photodump,
+#likethings,
+#interests,
+#to {
+  scroll-margin-top: 7.5rem;
+}
+
 .nav_list {
   list-style: none;
   padding: 0;
