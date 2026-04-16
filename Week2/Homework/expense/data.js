@@ -2,7 +2,7 @@ export const expenses = [
   {
     id: 1,
     title: "스타벅스 아메리카노",
-    date: "2026-04-01",
+    date: "2026-04-07",
     category: "식비",
     payment: "신용카드",
     amount: -4500,
@@ -18,7 +18,7 @@ export const expenses = [
   {
     id: 3,
     title: "강남역 편의점",
-    date: "2026-04-03",
+    date: "2026-04-10",
     category: "식비",
     payment: "체크카드",
     amount: -2500,
@@ -26,7 +26,7 @@ export const expenses = [
   {
     id: 4,
     title: "교보문고 책 구매",
-    date: "2026-04-03",
+    date: "2026-04-01",
     category: "문화",
     payment: "신용카드",
     amount: -18000,
@@ -50,7 +50,7 @@ export const expenses = [
   {
     id: 7,
     title: "넷플릭스 구독료",
-    date: "2026-04-06",
+    date: "2026-04-05",
     category: "문화",
     payment: "신용카드",
     amount: -17000,
@@ -58,7 +58,7 @@ export const expenses = [
   {
     id: 8,
     title: "쿠팡 로켓프레시",
-    date: "2026-04-07",
+    date: "2026-04-04",
     category: "식비",
     payment: "체크카드",
     amount: -42000,
@@ -82,7 +82,7 @@ export const expenses = [
   {
     id: 11,
     title: "택시비",
-    date: "2026-04-10",
+    date: "2026-04-02",
     category: "교통",
     payment: "신용카드",
     amount: -8500,
