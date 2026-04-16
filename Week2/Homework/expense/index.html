@@ -27,14 +27,25 @@
           <label for="search-type">유형</label>
           <select id="search-type" name="type">
             <option value="all">전체</option>
+            <option value="income">수입</option>
+            <option value="expense">지출</option>
           </select>
           <label for="search-category">카테고리</label>
           <select id="search-category" name="category">
             <option value="all">전체</option>
+            <option value="food">식비</option>
+            <option value="salary">월급</option>
+            <option value="culture">문화</option>
+            <option value="transport">교통</option>
+            <option value="living">생활</option>
+            <option value="other">기타</option>
           </select>
           <label for="search-payment">결제수단</label>
           <select id="search-payment" name="payment">
             <option value="all">전체</option>
+            <option value="credit">신용카드</option>
+            <option value="debit">체크카드</option>
+            <option value="cash">현금</option>
           </select>
         </div>
         <button type="submit">적용</button>
@@ -44,14 +55,15 @@
 
     <!-- 표 -->
     <section class="expense-table">
-      <div>
-        <div class="date-dropdown">
-          <select name="filter-date">
-            <option value="default">날짜 내림차순</option>
-          </select>
+      <div class="table-controls">
+        <select name="filter-date">
+          <option value="date-descending">날짜 내림차순</option>
+          <option value="date-ascending">날짜 오름차순</option>
+        </select>
+        <div class="button-area">
+          <button type="button">선택 삭제</button>
+          <button type="submit">추가</button>
         </div>
-        <button type="button">선택 삭제</button>
-        <button type="submit">추가</button>
       </div>
       <table>
         <thead>
