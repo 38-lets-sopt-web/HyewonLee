@@ -1,6 +1,7 @@
 import { renderTable } from "./table.js";
 import { filterData } from "./filter.js";
 import { sortByDate } from "./sort.js";
+import { selectDelItems } from "./action.js";
 
 const expenseData = JSON.parse(localStorage.getItem("expenseData")) || [];
 
@@ -12,7 +13,6 @@ renderTable(currentData);
 
 // filter-form 읽어오기
 const form = document.getElementById("filter-form");
-
 // 필터링
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -35,7 +35,6 @@ form.addEventListener("reset", () => {
 
 // 정렬 읽어오기
 const sortEl = document.getElementById("filter-date");
-
 // 정렬
 sortEl.addEventListener("change", (e) => {
   const order = e.target.value;
@@ -43,3 +42,35 @@ sortEl.addEventListener("change", (e) => {
   currentData = sortByDate(currentData, order);
   renderTable(currentData);
 });
+
+// 전체 체크박스로 선택 상태 바꾸기
+const chkAll = document.getElementById("chkAll");
+chkAll.addEventListener("change", (e) => {
+  // 지금 상태 가져오기 (true, false)
+  const checked = e.target.checked;
+  // 아래 체크박스들 가져오기
+  const rowChecks = document.querySelectorAll(".row-check");
+  // 전부 상태 통일
+  rowChecks.forEach((chk) => {
+    chk.checked = checked;
+  });
+});
+
+// 선택 항목 삭제 (button id로 접근)
+const selectDelBtn = document.querySelector("#selectDelBtn");
+selectDelBtn.addEventListener("click", () => {
+  // check된 row 불러오기 (row class, data id로 접근)
+  const checkedRow = document.querySelectorAll(".row-check:checked");
+  // 배열로 바꿔서 row의 id들 저장
+  const rowIds = Array.from(checkedRow).map((chk) => Number(chk.dataset.id));
+  // checked된 id 제외한 새로운 데이터 생성
+  const newData = selectDelItems(currentData, rowIds);
+  localStorage.setItem("expenseData", JSON.stringify(newData));
+  // 상태 업데이트
+  currentData = newData;
+  renderTable(newData);
+});
+
+// 추가
+const addBtn = document.querySelector("#addBtn");
+addBtn.addEventListener("click", () => {});
