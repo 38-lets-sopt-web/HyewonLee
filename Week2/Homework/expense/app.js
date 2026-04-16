@@ -25,3 +25,7 @@ form.addEventListener("submit", (e) => {
   const filteredData = filterData(expenseData, filters);
   renderTable(filteredData);
 });
+
+form.addEventListener("reset", (e) => {
+  renderTable(expenseData);
+});
