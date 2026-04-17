@@ -3,6 +3,13 @@ import { filterData } from "./filter.js";
 import { sortByDate } from "./sort.js";
 import { selectDelItems } from "./action.js";
 import { addData } from "./addModal.js";
+import { detailData } from "./detailModal.js";
+
+// reload
+const reloadIcon = document.querySelector(".reload");
+reloadIcon.addEventListener("click", (e) => {
+  location.reload();
+});
 
 let expenseData = JSON.parse(localStorage.getItem("expenseData")) || [];
 
@@ -72,10 +79,10 @@ selectDelBtn.addEventListener("click", () => {
   renderTable(newData);
 });
 
-// 추가 모달
+// 내역 추가 모달
 const addModal = document.querySelector(".add-modal");
 const addBtn = document.querySelector("#addItem");
-const closeBtn = document.querySelector(".close");
+const closeAddBtn = document.querySelector(".closeAddModal");
 
 // 모달 열기
 addBtn.addEventListener("click", () => {
@@ -83,7 +90,7 @@ addBtn.addEventListener("click", () => {
 });
 
 // 모달 닫기
-closeBtn.addEventListener("click", () => {
+closeAddBtn.addEventListener("click", () => {
   addModal.style.display = "none";
 });
 
@@ -97,4 +104,26 @@ addForm.addEventListener("submit", (e) => {
   renderTable(currentData);
   // 제출 후 모달 닫기
   addModal.style.display = "none";
+});
+
+// 세부 내용 모달
+const tbody = document.querySelector(".tbody-event");
+const detailModal = document.querySelector(".detail-modal");
+const closeDetailBtn = document.querySelector(".closeDetailModal");
+
+// 모달 열기
+tbody.addEventListener("click", (e) => {
+  if (e.target.classList.contains("title")) {
+    // 숫자로 변환해줘야 expenseData의 id와 비교 가능
+    const id = Number(e.target.dataset.id);
+    // HTML에서 찾지 말고 배열에서 가져오기
+    const item = expenseData.find((item) => item.id === id);
+    detailData(item);
+    detailModal.style.display = "flex";
+  }
+});
+
+// 모달 닫기
+closeDetailBtn.addEventListener("click", () => {
+  detailModal.style.display = "none";
 });

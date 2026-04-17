@@ -9,7 +9,7 @@ export function renderTable(expenseData) {
 
     row.innerHTML = `
     <td><input type="checkbox" class="row-check" data-id="${item.id}" /></td>
-    <td>${item.title}</td>
+    <td class="title" data-id="${item.id}">${item.title}</td>
     <td>${item.amount > 0 ? `+${item.amount}` : item.amount}</td>
     <td>${item.date}</td>
     <td>${item.category}</td>

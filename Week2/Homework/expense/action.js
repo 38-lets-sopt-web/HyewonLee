@@ -2,5 +2,3 @@
 export function selectDelItems(expenseData, rowIds) {
   return expenseData.filter((item) => !rowIds.includes(item.id));
 }
-
-// 추가
