@@ -10,7 +10,7 @@ export function renderTable(expenseData) {
     row.innerHTML = `
     <td><input type="checkbox" class="row-check" data-id="${item.id}" /></td>
     <td>${item.title}</td>
-    <td>${item.amount}</td>
+    <td>${item.amount > 0 ? `+${item.amount}` : item.amount}</td>
     <td>${item.date}</td>
     <td>${item.category}</td>
     <td>${item.payment}</td>
@@ -23,7 +23,9 @@ export function renderTable(expenseData) {
 }
 
 function calculateTotal(expenseData) {
-  return expenseData.reduce((acc, item) => acc + item.amount, 0);
+  const total = expenseData.reduce((acc, item) => acc + item.amount, 0);
+  // 금액 포맷팅
+  return total > 0 ? `+${total}` : total < 0 ? `${total}` : `0`;
 }
 
 function renderTotal(expenseData) {

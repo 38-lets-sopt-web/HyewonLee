@@ -62,7 +62,7 @@
         </select>
         <div class="button-area">
           <button id="selectDelBtn">선택 삭제</button>
-          <button id="addBtn">추가</button>
+          <button id="addItem">추가</button>
         </div>
       </div>
       <table>
@@ -105,7 +105,7 @@
           <div class="add-type">
             <label for="add-type">유형</label>
             <select id="add-type" name="type">
-              <option value="minus">지출 (-)</option>
+              <option value="expense">지출 (-)</option>
             </select>
           </div>
           <div class="add-amount">
@@ -124,15 +124,24 @@
             <label for="add-category">카테고리</label>
             <select id="add-category" name="category">
               <option value="select">선택</option>
+              <option value="food">식비</option>
+              <option value="salary">월급</option>
+              <option value="culture">문화</option>
+              <option value="transport">교통</option>
+              <option value="living">생활</option>
+              <option value="other">기타</option>
             </select>
           </div>
           <div class="add-payment">
             <label for="add-payment">결제수단</label>
             <select id="add-payment" name="payment">
               <option value="select">선택</option>
+              <option value="credit">신용카드</option>
+              <option value="debit">체크카드</option>
+              <option value="cash">현금</option>
             </select>
           </div>
-          <button type="button">추가</button>
+          <button type="submit">추가</button>
         </div>
       </form>
     </div>

@@ -2,8 +2,9 @@ import { renderTable } from "./table.js";
 import { filterData } from "./filter.js";
 import { sortByDate } from "./sort.js";
 import { selectDelItems } from "./action.js";
+import { addData } from "./addModal.js";
 
-const expenseData = JSON.parse(localStorage.getItem("expenseData")) || [];
+let expenseData = JSON.parse(localStorage.getItem("expenseData")) || [];
 
 // 현재 화면에 있는 데이터
 let currentData = sortByDate(expenseData, "date-descending");
@@ -12,9 +13,9 @@ let currentData = sortByDate(expenseData, "date-descending");
 renderTable(currentData);
 
 // filter-form 읽어오기
-const form = document.getElementById("filter-form");
+const filterForm = document.getElementById("filter-form");
 // 필터링
-form.addEventListener("submit", (e) => {
+filterForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const filters = {
@@ -29,7 +30,7 @@ form.addEventListener("submit", (e) => {
 });
 
 // 초기화
-form.addEventListener("reset", () => {
+filterForm.addEventListener("reset", () => {
   renderTable(expenseData);
 });
 
@@ -71,6 +72,29 @@ selectDelBtn.addEventListener("click", () => {
   renderTable(newData);
 });
 
-// 추가
-const addBtn = document.querySelector("#addBtn");
-addBtn.addEventListener("click", () => {});
+// 추가 모달
+const addModal = document.querySelector(".add-modal");
+const addBtn = document.querySelector("#addItem");
+const closeBtn = document.querySelector(".close");
+
+// 모달 열기
+addBtn.addEventListener("click", () => {
+  addModal.style.display = "flex";
+});
+
+// 모달 닫기
+closeBtn.addEventListener("click", () => {
+  addModal.style.display = "none";
+});
+
+// add-form 읽어오기
+const addForm = document.getElementById("add-form");
+addForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  currentData = sortByDate(addData(expenseData), "date-descending");
+  // expenseData 동기화 필요
+  expenseData = currentData;
+  renderTable(currentData);
+  // 제출 후 모달 닫기
+  addModal.style.display = "none";
+});
