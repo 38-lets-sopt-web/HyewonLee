@@ -4,13 +4,22 @@ export function renderTable(expenseData) {
   // 재렌더링 시 중복되지 않도록 초기화
   tbody.innerHTML = "";
 
+  // localStorage 초기화 시 안내 메시지
+  if (expenseData.length === 0) {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td colspan="6" class = "empty-message">내역이 없습니다.</td>`;
+    tbody.appendChild(row);
+    renderTotal(expenseData);
+    return;
+  }
+
   expenseData.forEach((item) => {
     const row = document.createElement("tr");
 
     row.innerHTML = `
     <td><input type="checkbox" class="row-check" data-id="${item.id}" /></td>
     <td class="title" data-id="${item.id}">${item.title}</td>
-    <td>${item.amount > 0 ? `+${item.amount}` : item.amount}</td>
+    <td class='${item.amount > 0 ? "td-income" : "td-expense"}'>${item.amount > 0 ? `+${item.amount}` : item.amount}</td>
     <td>${item.date}</td>
     <td>${item.category}</td>
     <td>${item.payment}</td>
@@ -35,4 +44,10 @@ function renderTotal(expenseData) {
   const total = calculateTotal(expenseData);
   // 값을 totalEl에 넣어줌
   totalEl.textContent = total;
+
+  if (total > 0) {
+    totalEl.classList.add("td-income");
+  } else if (total < 0) {
+    totalEl.classList.add("td-expense");
+  }
 }

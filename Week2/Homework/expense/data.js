@@ -98,7 +98,7 @@ export const expenses = [
 ];
 
 // localStorage에 expenseData가 없으면 expenses라는 초기 데이터를 넣자
-// stringify (문자열로 변환)
-if (!localStorage.getItem("expenseData")) {
+if (localStorage.getItem("expenseData") === null) {
+  // stringify (문자열로 변환)
   localStorage.setItem("expenseData", JSON.stringify(expenses));
 }

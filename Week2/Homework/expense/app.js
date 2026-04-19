@@ -80,9 +80,9 @@ selectDelBtn.addEventListener("click", () => {
 });
 
 // 내역 추가 모달
-const addModal = document.querySelector(".add-modal");
+const addModal = document.querySelector("#add-modal");
 const addBtn = document.querySelector("#addItem");
-const closeAddBtn = document.querySelector(".closeAddModal");
+const closeAddBtn = document.querySelector("#closeAddModal");
 
 // 모달 열기
 addBtn.addEventListener("click", () => {
@@ -108,8 +108,8 @@ addForm.addEventListener("submit", (e) => {
 
 // 세부 내용 모달
 const tbody = document.querySelector(".tbody-event");
-const detailModal = document.querySelector(".detail-modal");
-const closeDetailBtn = document.querySelector(".closeDetailModal");
+const detailModal = document.querySelector("#detail-modal");
+const closeDetailBtn = document.querySelector("#closeDetailModal");
 
 // 모달 열기
 tbody.addEventListener("click", (e) => {

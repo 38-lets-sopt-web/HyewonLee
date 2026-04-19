@@ -1,7 +1,170 @@
-.add-modal {
-  display: none;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Sunshiney&display=swap");
+
+body {
+  font-family: var(--font-family);
+  font-size: 17px;
+  margin: 0;
+  background-color: var(--color-bg);
 }
 
-.detail-modal {
+button,
+.title,
+select {
+  cursor: pointer;
+}
+
+/* 헤더 */
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+.reload {
+  font-size: 23px;
+}
+
+.container {
+  width: 100%;
+  /* 가운데 정렬 */
+  max-width: 950px;
+  margin: 0 auto;
+
+  min-height: 970px;
+}
+
+.filter,
+.expense-table {
+  border-radius: var(--radius);
+  background-color: var(--color-white);
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+#filter-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.filter-title,
+.filter-dropdown,
+.filter-btn {
+  grid-column: span 3;
+  display: flex;
+  gap: 1rem;
+}
+
+.filter-title input,
+.filter-dropdown select,
+.filter-btn button {
+  flex: 1;
+}
+
+label {
+  font-weight: 550;
+}
+button {
+  padding: 0.5rem;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 550;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  table-layout: fixed;
+}
+.title {
+  text-decoration: underline;
+}
+th {
+  background-color: var(--color-th);
+}
+td {
+  border-bottom: 1px solid var(--color-grey);
+  white-space: nowrap;
+}
+th,
+td {
+  /* thead와 tbody 열 맞춤 */
+  text-align: center;
+  padding: 0.5rem;
+}
+.td-income {
+  color: var(--color-income);
+  font-weight: 550;
+}
+.td-expense {
+  color: var(--color-expense);
+  font-weight: 550;
+}
+tfoot {
+  text-align: center;
+  font-weight: 600;
+}
+
+input,
+select {
+  padding: 5px;
+  font-size: 15px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-lightgrey);
+}
+input {
+  color: var(--color-grey);
+}
+
+/* 모달 */
+.modal {
+  position: fixed;
   display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.3);
+}
+.modal-content {
+  position: absolute;
+  background-color: var(--color-bg);
+  /* 뒤에 어둡게 해야지 */
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  /* 팝업 크기의 절반만큼 위/왼쪽으로 이동시켜 중앙에 배치 */
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  width: 450px;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+.add-form-row {
+  display: flex;
+  gap: 1rem;
+}
+.closeModal {
+  font-size: 20px;
 }
