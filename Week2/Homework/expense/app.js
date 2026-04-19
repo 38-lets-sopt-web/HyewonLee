@@ -81,18 +81,24 @@ selectDelBtn.addEventListener("click", () => {
 });
 
 // 내역 추가 모달
+const modal = document.querySelector(".modal");
 const addModal = document.querySelector("#add-modal");
 const addBtn = document.querySelector("#addItem");
 const closeAddBtn = document.querySelector("#closeAddModal");
 
 // 모달 열기
-addBtn.addEventListener("click", () => {
+addBtn.addEventListener("click", (e) => {
   addModal.style.display = "flex";
 });
 
 // 모달 닫기
 closeAddBtn.addEventListener("click", () => {
   addModal.style.display = "none";
+});
+// 백드롭 클릭 시 모달 닫기
+modal.addEventListener("click", () => {
+  addModal.style.display = "none";
+  detailModal.style.display = "none";
 });
 
 // add-form 읽어오기
