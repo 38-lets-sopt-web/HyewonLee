@@ -38,7 +38,8 @@ filterForm.addEventListener("submit", (e) => {
 
 // 초기화
 filterForm.addEventListener("reset", () => {
-  renderTable(expenseData);
+  currentData = sortByDate(expenseData, sortEl.value);
+  renderTable(currentData);
 });
 
 // 정렬 읽어오기
