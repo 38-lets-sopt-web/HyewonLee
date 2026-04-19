@@ -99,6 +99,19 @@ closeAddBtn.addEventListener("click", () => {
 const addForm = document.getElementById("add-form");
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  // 하나라도 비어있으면 alert
+  const title = document.getElementById("add-title").value;
+  const amount = document.getElementById("add-amount").value;
+  const date = document.getElementById("add-date").value;
+  const category = document.getElementById("add-category").value;
+  const payment = document.getElementById("add-payment").value;
+
+  if (!title || !amount || !date || category === "select" || payment === "select") {
+    alert("모든 항목을 입력해주세요!");
+    return;
+  }
+
   currentData = sortByDate(addData(expenseData), "date-descending");
   // expenseData 동기화 필요
   expenseData = currentData;
