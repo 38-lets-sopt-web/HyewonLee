@@ -104,6 +104,7 @@ addForm.addEventListener("submit", (e) => {
   renderTable(currentData);
   // 제출 후 모달 닫기
   addModal.style.display = "none";
+  addForm.reset();
 });
 
 // 세부 내용 모달
