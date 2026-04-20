@@ -1,6 +1,8 @@
+@import "./theme.css";
+
 * {
   font-family: "Noto Sans KR", sans-serif;
-  color: #505050;
+  color: var(--color-text);
 }
 
 .header {
@@ -50,7 +52,7 @@
   /* 부모에 overflow 안 넣어야 nav의 sticky 작동 */
   margin-top: 100px;
 
-  background-color: #ddf2d8;
+  background-color: var(--color-bg);
 }
 
 nav {
@@ -93,7 +95,7 @@ nav {
   align-items: center;
 }
 .nav_item:hover {
-  background-color: #ddf2d8;
+  background-color: var(--color-bg);
 }
 
 .nav_item--top {
@@ -175,7 +177,7 @@ nav {
   /* 스크롤 스냅 적용 */
   scroll-snap-type: x mandatory;
 
-  background-color: #ddf2d8;
+  background-color: var(--color-bg);
 }
 /* 스크롤 안보이게 */
 .photo::-webkit-scrollbar {
@@ -277,7 +279,7 @@ button {
   width: 80px;
   padding: 5px;
   border-radius: 30px;
-  background-color: rgb(195, 239, 255);
+  background-color: var(--color-good);
 
   align-items: center;
   justify-content: center;
@@ -285,14 +287,14 @@ button {
   transition: background-color 0.3s ease;
 }
 .btn_good:hover {
-  background-color: rgb(147, 226, 255);
+  background-color: var(--color-good-hover);
 }
 .btn_bad {
   display: flex;
   width: 80px;
   padding: 5px;
   border-radius: 30px;
-  background-color: #ffbbbb;
+  background-color: var(--color-bad);
 
   align-items: center;
   justify-content: center;
@@ -300,7 +302,7 @@ button {
   transition: background-color 0.3s ease;
 }
 .btn_bad:hover {
-  background-color: #ff9999;
+  background-color: var(--color-bad-hover);
 }
 
 .message {
