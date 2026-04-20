@@ -120,13 +120,19 @@ nav {
   overflow: auto;
   margin-top: 40px;
   gap: 20px;
-  width: 100%;
   font-weight: 550;
+}
+
+.grid,
+.photo,
+.interest,
+.message {
+  width: 100%;
+  max-width: 1200px;
 }
 
 .grid {
   display: grid;
-  width: 80%;
   /* 사진 조절하고 싶은데 어디서 지정하지.. */
   grid-template-areas:
     "a b c c"
@@ -163,7 +169,6 @@ nav {
 }
 
 .photo {
-  width: 80%;
   height: 200px;
   overflow: hidden;
   margin-top: 20px;
@@ -221,7 +226,6 @@ nav {
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 20px;
-  width: 80%;
 }
 .card {
   display: flex;
@@ -288,7 +292,6 @@ button {
 }
 
 .message {
-  width: 80%;
   box-sizing: border-box;
   padding: 10px 0 10px 30px;
   border-radius: 30px;
