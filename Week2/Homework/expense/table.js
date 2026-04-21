@@ -19,7 +19,7 @@ export function renderTable(expenseData) {
     row.innerHTML = `
     <td><input type="checkbox" class="row-check" data-id="${item.id}" /></td>
     <td class="title" data-id="${item.id}">${item.title}</td>
-    <td class='${item.amount > 0 ? "td-income" : "td-expense"}'>${item.amount > 0 ? `+${item.amount}` : item.amount}</td>
+    <td class='${item.amount > 0 ? "td-income" : "td-expense"}'>${formatAmount(item.amount)}</td>
     <td>${item.date}</td>
     <td>${item.category}</td>
     <td>${item.payment}</td>
@@ -31,10 +31,17 @@ export function renderTable(expenseData) {
   renderTotal(expenseData);
 }
 
+// 문자열로 반환
+function formatAmount(amount) {
+  const formatted = amount.toLocaleString("ko-KR");
+  if (amount > 0) return `+${formatted}`;
+  if (amount < 0) return `${formatted}`;
+  else return 0;
+}
+
 function calculateTotal(expenseData) {
   const total = expenseData.reduce((acc, item) => acc + item.amount, 0);
-  // 금액 포맷팅
-  return total > 0 ? `+${total}` : total < 0 ? `${total}` : `0`;
+  return total;
 }
 
 function renderTotal(expenseData) {
@@ -42,12 +49,12 @@ function renderTotal(expenseData) {
   const totalEl = document.getElementById("total");
   // 계산한 후
   const total = calculateTotal(expenseData);
-  // 값을 totalEl에 넣어줌
-  totalEl.textContent = total;
 
   if (total > 0) {
     totalEl.classList.add("td-income");
   } else if (total < 0) {
     totalEl.classList.add("td-expense");
   }
+  // 값을 totalEl에 넣어줌
+  totalEl.textContent = formatAmount(total);
 }
