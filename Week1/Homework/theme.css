@@ -1,0 +1,8 @@
+:root {
+  --color-text: #505050;
+  --color-bg: #ddf2d8;
+  --color-good: #c3efff;
+  --color-good-hover: #93e2ff;
+  --color-bad: #ffbbbb;
+  --color-bad-hover: #ff9999;
+}
