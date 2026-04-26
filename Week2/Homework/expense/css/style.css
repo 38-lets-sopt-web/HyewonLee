@@ -24,6 +24,8 @@ select {
 }
 .reload {
   font-size: 23px;
+  border: none;
+  cursor: pointer;
 }
 
 .container {
