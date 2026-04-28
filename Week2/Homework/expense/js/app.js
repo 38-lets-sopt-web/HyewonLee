@@ -113,7 +113,7 @@ addForm.addEventListener("submit", (e) => {
   const category = document.getElementById("add-category").value;
   const payment = document.getElementById("add-payment").value;
 
-  if (!title || !amount || !date || category === "select" || payment === "select") {
+  if (!title.trim() || !amount || !date || !category || !payment) {
     alert("모든 항목을 입력해주세요!");
     return;
   }
