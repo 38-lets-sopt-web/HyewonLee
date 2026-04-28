@@ -167,6 +167,6 @@ input {
   display: flex;
   gap: 1rem;
 }
-.closeModal {
+.close-modal {
   font-size: 20px;
 }

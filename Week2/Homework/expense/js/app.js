@@ -66,7 +66,7 @@ chkAll.addEventListener("change", (e) => {
 });
 
 // 선택 항목 삭제 (button id로 접근)
-const selectDelBtn = document.querySelector("#selectDelBtn");
+const selectDelBtn = document.querySelector("#select-del-btn");
 selectDelBtn.addEventListener("click", () => {
   // check된 row 불러오기 (row class, data id로 접근)
   const checkedRow = document.querySelectorAll(".row-check:checked");
@@ -83,8 +83,8 @@ selectDelBtn.addEventListener("click", () => {
 // 내역 추가 모달
 const modal = document.querySelector(".modal");
 const addModal = document.querySelector("#add-modal");
-const addBtn = document.querySelector("#addItem");
-const closeAddBtn = document.querySelector("#closeAddModal");
+const addBtn = document.querySelector("#add-item");
+const closeAddBtn = document.querySelector("#close-add-modal");
 
 // 모달 열기
 addBtn.addEventListener("click", (e) => {
@@ -130,7 +130,7 @@ addForm.addEventListener("submit", (e) => {
 // 세부 내용 모달
 const tbody = document.querySelector(".tbody-event");
 const detailModal = document.querySelector("#detail-modal");
-const closeDetailBtn = document.querySelector("#closeDetailModal");
+const closeDetailBtn = document.querySelector("#close-detail-modal");
 
 // 모달 열기
 tbody.addEventListener("click", (e) => {
