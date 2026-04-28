@@ -17,4 +17,6 @@ export const color = {
   bg: "#5e3b27",
   lightbrown: "#967c6c",
   green: "#209e10",
+  blue: "#9acef5",
+  red: "#f59a9a",
 };
