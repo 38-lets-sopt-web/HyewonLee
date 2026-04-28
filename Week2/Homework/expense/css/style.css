@@ -2,7 +2,7 @@
 
 body {
   font-family: var(--font-family);
-  font-size: 17px;
+  font-size: 1rem;
   margin: 0;
   background-color: var(--color-bg);
 }
@@ -23,7 +23,7 @@ header {
   color: var(--color-white);
 }
 .reload {
-  font-size: 23px;
+  font-size: 1.5rem;
   border: none;
   cursor: pointer;
 }
@@ -31,10 +31,10 @@ header {
 .container {
   width: 100%;
   /* 가운데 정렬 */
-  max-width: 950px;
+  max-width: 70rem;
   margin: 0 auto;
 
-  min-height: 1000px;
+  min-height: 63rem;
 }
 
 .filter,
@@ -72,7 +72,7 @@ button {
   background-color: var(--color-black);
   color: var(--color-white);
   border-radius: var(--radius);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 550;
 }
 
@@ -117,8 +117,8 @@ tfoot {
 
 input,
 select {
-  padding: 5px;
-  font-size: 15px;
+  padding: 0.5rem;
+  font-size: 1rem;
   border-radius: var(--radius);
   border: 1px solid var(--color-lightgrey);
 }
@@ -148,8 +148,8 @@ input {
   left: 50%;
   /* 팝업 크기의 절반만큼 위/왼쪽으로 이동시켜 중앙에 배치 */
   transform: translate(-50%, -50%);
-  padding: 1rem;
-  width: 450px;
+  padding: 1.25rem;
+  width: 35rem;
 }
 .modal-header {
   display: flex;
@@ -168,5 +168,5 @@ input {
   gap: 1rem;
 }
 .close-modal {
-  font-size: 20px;
+  font-size: 1.5rem;
 }
