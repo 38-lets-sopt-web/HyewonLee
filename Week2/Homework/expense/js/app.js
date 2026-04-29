@@ -115,9 +115,13 @@ closeAddBtn.addEventListener("click", () => {
   addModal.style.display = "none";
 });
 // 백드롭 클릭 시 모달 닫기
-modal.addEventListener("click", () => {
-  addModal.style.display = "none";
-  detailModal.style.display = "none";
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
+  modal.addEventListener("click", (e) => {
+    // 클릭된 요소가 백드롭이 아니면 무시
+    if (e.target !== e.currentTarget) return;
+    modal.style.display = "none";
+  });
 });
 
 // add-form 읽어오기
