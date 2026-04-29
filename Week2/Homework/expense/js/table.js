@@ -49,6 +49,8 @@ function renderTotal(expenseData) {
   const totalEl = document.getElementById("total");
   // 계산한 후
   const total = calculateTotal(expenseData);
+  // 클래스 붙이기 전에 누적 방지하기 위해서 클래스 삭제
+  totalEl.classList.remove("td-income", "td-expense");
 
   if (total > 0) {
     totalEl.classList.add("td-income");
