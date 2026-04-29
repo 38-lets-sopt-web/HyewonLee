@@ -65,6 +65,17 @@ chkAll.addEventListener("change", (e) => {
   });
 });
 
+// 개별 체크박스 해제 시 전체 체크박스도 해제
+document.querySelector("tbody").addEventListener("change", (e) => {
+  // tbody안에서 row-check가 바뀌면
+  if (e.target.classList.contains("row-check")) {
+    // 화면의 체크박스를 다 가져와서
+    const allChecks = document.querySelectorAll(".row-check");
+    // every를 사용해서 하나라도 해제되면 chkAll이 false
+    chkAll.checked = Array.from(allChecks).every((chk) => chk.checked);
+  }
+});
+
 // 선택 항목 삭제 (button id로 접근)
 const selectDelBtn = document.querySelector("#select-del-btn");
 selectDelBtn.addEventListener("click", () => {
