@@ -1,5 +1,6 @@
+// GameTab: props 전달
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useGame } from "../hooks/useGame";
 import Score from "./Score";
 import Time from "./Time";
 import Result from "./Result";
@@ -7,23 +8,22 @@ import InfoMessage from "./InfoMessage";
 import GameBoard from "./GameBoard";
 
 export default function GameTab() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [level, setLevel] = useState("Lv1");
+  const game = useGame();
 
   return (
     <GameTabWrapper>
       <GameTabCol>
-        <Time />
-        <Score />
-        <Result />
+        <Time timeLeft={game.timeLeft} setTimeLeft={game.setTimeLeft} />
+        <Score score={game.score} setScore={game.setScore} />
+        <Result
+          successCount={game.successCount}
+          setSuccessCount={game.setSuccessCount}
+          failCount={game.failCount}
+          setFailCount={game.setFailCount}
+        />
         <InfoMessage />
       </GameTabCol>
-      <GameBoard
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-        level={level}
-        setLevel={setLevel}
-      />
+      <GameBoard {...game} />
     </GameTabWrapper>
   );
 }

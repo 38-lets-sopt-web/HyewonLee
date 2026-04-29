@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { font } from "../styles/tokens";
 
-export default function Time() {
+export default function Time({ timeLeft }) {
   return (
     <section>
       <p>남은 시간</p>
-      <TimeValue>30</TimeValue>
+      <TimeValue>{timeLeft}</TimeValue>
     </section>
   );
 }

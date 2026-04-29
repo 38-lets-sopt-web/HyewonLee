@@ -27,7 +27,7 @@ const ResultCard = styled.section`
 `;
 
 const SuccessLabel = styled.p`
-  color: ${color.blue};
+  color: ${color.green};
 `;
 
 const FailLabel = styled.p`
