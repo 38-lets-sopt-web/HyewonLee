@@ -18,12 +18,19 @@ export function renderTable(expenseData) {
 
     row.innerHTML = `
     <td><input type="checkbox" class="row-check" data-id="${item.id}" /></td>
-    <td class="title" data-id="${item.id}">${item.title}</td>
     <td class='${item.amount > 0 ? "td-income" : "td-expense"}'>${formatAmount(item.amount)}</td>
     <td>${item.date}</td>
     <td>${item.category}</td>
     <td>${item.payment}</td>
   `;
+
+    const titleTd = document.createElement("td");
+    titleTd.classList.add("title");
+    titleTd.dataset.id = item.id;
+    titleTd.textContent = item.title;
+
+    // 체크박스 td 다음에 title td 삽입
+    row.insertBefore(titleTd, row.children[1]);
 
     tbody.appendChild(row);
   });
