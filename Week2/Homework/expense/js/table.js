@@ -36,7 +36,7 @@ function formatAmount(amount) {
   const formatted = amount.toLocaleString("ko-KR");
   if (amount > 0) return `+${formatted}`;
   if (amount < 0) return `${formatted}`;
-  else return 0;
+  else return "0";
 }
 
 function calculateTotal(expenseData) {
