@@ -73,11 +73,19 @@ selectDelBtn.addEventListener("click", () => {
   // 배열로 바꿔서 row의 id들 저장
   const rowIds = Array.from(checkedRow).map((chk) => Number(chk.dataset.id));
   // checked된 id 제외한 새로운 데이터 생성
-  const newData = selectDelItems(currentData, rowIds);
-  localStorage.setItem("expenseData", JSON.stringify(newData));
-  // 상태 업데이트
-  currentData = newData;
-  renderTable(newData);
+  expenseData = selectDelItems(expenseData, rowIds);
+  // localStorage 업데이트
+  localStorage.setItem("expenseData", JSON.stringify(expenseData));
+  // 현재 필터 상태 그대로 다시 적용(삭제하면 필터링 풀리니까)
+  const filters = {
+    title: document.getElementById("search-title").value,
+    type: document.getElementById("search-type").value,
+    category: document.getElementById("search-category").value,
+    payment: document.getElementById("search-payment").value,
+  };
+  // 필터 적용 후 정렬
+  currentData = sortByDate(filterData(expenseData, filters), sortEl.value);
+  renderTable(currentData);
 });
 
 // 내역 추가 모달
