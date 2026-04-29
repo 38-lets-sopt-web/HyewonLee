@@ -141,9 +141,10 @@ addForm.addEventListener("submit", (e) => {
     return;
   }
 
-  currentData = sortByDate(addData(expenseData), "date-descending");
-  // expenseData 동기화 필요
-  expenseData = currentData;
+  // 추가된 원본 데이터를 expenseData에 반영한 후
+  expenseData = addData(expenseData);
+  // currentData와 동기화
+  currentData = sortByDate(expenseData, "date-descending");
   renderTable(currentData);
   // 제출 후 모달 닫기
   addModal.style.display = "none";
