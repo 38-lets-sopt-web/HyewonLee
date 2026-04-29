@@ -97,6 +97,8 @@ selectDelBtn.addEventListener("click", () => {
   // 필터 적용 후 정렬
   currentData = sortByDate(filterData(expenseData, filters), sortEl.value);
   renderTable(currentData);
+  // 삭제 후 전체 체크박스 해제
+  chkAll.checked = false;
 });
 
 // 내역 추가 모달
