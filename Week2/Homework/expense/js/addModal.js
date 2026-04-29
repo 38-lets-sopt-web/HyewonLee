@@ -8,7 +8,6 @@ export function addData(expenseData) {
   const addItem = {
     id: Date.now(),
     title: document.getElementById("add-title").value,
-    type: type,
     amount: type === "income" ? amountType : -amountType,
     date: document.getElementById("add-date").value,
     category: CATEGORY[document.getElementById("add-category").value],
