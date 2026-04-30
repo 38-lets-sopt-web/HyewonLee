@@ -5,6 +5,7 @@ import { LEVEL } from "../constants/config";
 import moleImg from "../assets/mole.jpg";
 import moleHitImg from "../assets/mole-hit.jpg";
 import bombImg from "../assets/bomb.jpg";
+import { useState } from "react";
 
 export default function GameBoard({
   isPlaying,
@@ -25,7 +26,11 @@ export default function GameBoard({
     <GameBoardWrapper>
       {/* Game 헤더 */}
       <GameHeader>
-        <Level value={level} onChange={(e) => handleLevelChange(e.target.value)}>
+        <Level
+          value={level}
+          onChange={(e) => handleLevelChange(e.target.value)}
+          disabled={isPlaying}
+        >
           <option value="Lv1">Level 1</option>
           <option value="Lv2">Level 2</option>
           <option value="Lv3">Level 3</option>
