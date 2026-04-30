@@ -21,7 +21,7 @@ export default function GameTab() {
           failCount={game.failCount}
           setFailCount={game.setFailCount}
         />
-        <InfoMessage />
+        <InfoMessage message={game.message} />
       </GameTabCol>
       <GameBoard {...game} />
     </GameTabWrapper>

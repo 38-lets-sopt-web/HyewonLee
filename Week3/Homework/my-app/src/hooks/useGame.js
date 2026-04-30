@@ -1,54 +1,53 @@
-// useGame.js: 게임 로직
-import { useState } from "react";
+import { useEffect, useCallback } from "react";
 import { LEVEL } from "../constants/config";
-import { useEffect } from "react";
+import { useGameState } from "./useGameState";
+import { useScore } from "./useScore";
+import { useTimer } from "./useTimer";
+import { useMoles } from "./useMoles";
 
 export function useGame() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [level, setLevel] = useState("Lv1");
-  const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(15);
-  const [successCount, setSuccessCount] = useState(0);
-  const [failCount, setFailCount] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(null); // 두더지와 폭탄의 위치
-  const [cellType, setCellType] = useState(null); // 'mole' | 'bomb' 구분
+  const { isPlaying, setIsPlaying, level, setLevel, message, setMessage } = useGameState();
+  const {
+    score,
+    setScore,
+    successCount,
+    setSuccessCount,
+    failCount,
+    setFailCount,
+    scoreRef,
+    resetScore,
+  } = useScore();
+  const { timeLeft, setTimeLeft, handleLevelChange } = useTimer(
+    isPlaying,
+    setIsPlaying,
+    level,
+    setLevel,
+  );
+  const { activeCells, setActiveCells, handleMoleClick, handleBombClick } = useMoles(
+    isPlaying,
+    level,
+    setScore,
+    setSuccessCount,
+    setFailCount,
+    setMessage,
+  );
 
-  const { grid } = LEVEL[level];
-  const cellCount = grid * grid;
+  // 초기화
+  const resetGame = useCallback(() => {
+    resetScore();
+    setTimeLeft(LEVEL[level].time);
+    setActiveCells([]);
+  }, [level, resetScore, setTimeLeft, setActiveCells]);
 
-  // isPlaying이면 1초마다 랜덤 위치에 두더지 출현
+  // timeLeft가 0이 되면 게임 종료
   useEffect(() => {
-    if (!isPlaying) {
-      return;
+    if (timeLeft === 0 && !isPlaying) {
+      // 게임 종료 alert 띄우기
+      alert(`게임 종료!\n레벨: ${level}\n최종 점수: ${scoreRef.current}`);
+      // 초기화
+      resetGame();
     }
-
-    // 간격 1초
-    const interval = setInterval(() => {
-      // 랜덤 칸 번호
-      const random = Math.floor(Math.random() * cellCount);
-      // 70% 두더지, 30% 폭탄
-      const type = Math.random() < 0.7 ? "mole" : "bomb";
-      // 뽑힌 칸 번호 저장
-      setActiveIndex(random);
-      // 뽑힌 타입 저장
-      setCellType(type);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [isPlaying, cellCount]);
-
-  // 두더지 클릭
-  const handleMoleClick = () => {
-    setScore((prev) => prev + 1);
-    setSuccessCount((prev) => prev + 1);
-    setActiveIndex(null);
-  };
-
-  // 폭탄 클릭
-  const handleBombClick = () => {
-    setScore((prev) => prev - 1);
-    setFailCount((prev) => prev + 1);
-  };
+  }, [timeLeft, isPlaying, level, resetGame, scoreRef]);
 
   return {
     isPlaying,
@@ -56,15 +55,12 @@ export function useGame() {
     level,
     setLevel,
     score,
-    setScore,
     timeLeft,
-    setTimeLeft,
     successCount,
-    setSuccessCount,
     failCount,
-    setFailCount,
-    activeIndex,
-    cellType,
+    activeCells,
+    message,
+    handleLevelChange,
     handleMoleClick,
     handleBombClick,
   };

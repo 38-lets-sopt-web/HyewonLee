@@ -1,10 +1,8 @@
-// import styled from "@emotion/styled";
-
-export default function InfoMessage() {
+export default function InfoMessage({ message }) {
   return (
     <section>
       <p>안내 메시지</p>
-      <p></p>
+      <p>{message}</p>
     </section>
   );
 }

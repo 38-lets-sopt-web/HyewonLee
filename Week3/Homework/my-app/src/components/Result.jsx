@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 import { font, color } from "../styles/tokens";
 
-export default function Result() {
+export default function Result({ successCount, failCount }) {
   return (
     <ResultWrapper>
       <ResultCard>
         <SuccessLabel>성공</SuccessLabel>
-        <ResultValue>0</ResultValue>
+        <ResultValue>{successCount}</ResultValue>
       </ResultCard>
       <ResultCard>
         <FailLabel>실패</FailLabel>
-        <ResultValue>0</ResultValue>
+        <ResultValue>{failCount}</ResultValue>
       </ResultCard>
     </ResultWrapper>
   );

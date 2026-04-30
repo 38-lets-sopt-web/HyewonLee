@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { font } from "../styles/tokens";
 
-export default function Score() {
+export default function Score({ score }) {
   return (
     <section>
       <p>총 점수</p>
-      <ScoreValue>0</ScoreValue>
+      <ScoreValue>{score}</ScoreValue>
     </section>
   );
 }

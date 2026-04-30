@@ -3,16 +3,17 @@ import styled from "@emotion/styled";
 import { color, font } from "../styles/tokens";
 import { LEVEL } from "../constants/config";
 import moleImg from "../assets/mole.jpg";
+import moleHitImg from "../assets/mole-hit.jpg";
 import bombImg from "../assets/bomb.jpg";
 
 export default function GameBoard({
   isPlaying,
   setIsPlaying,
   level,
-  setLevel,
-  activeIndex,
-  cellType,
+  handleLevelChange,
+  activeCells,
   handleMoleClick,
+  handleBombClick,
 }) {
   // 레벨에 맞는 grid 크기
   const { grid } = LEVEL[level];
@@ -23,7 +24,7 @@ export default function GameBoard({
     <GameBoardWrapper>
       {/* Game 헤더 */}
       <GameHeader>
-        <Level value={level} onChange={(e) => setLevel(e.target.value)}>
+        <Level value={level} onChange={(e) => handleLevelChange(e.target.value)}>
           <option value="Lv1">Level 1</option>
           <option value="Lv2">Level 2</option>
           <option value="Lv3">Level 3</option>
@@ -39,19 +40,38 @@ export default function GameBoard({
       </GameHeader>
       {/* Game 공간 */}
       <GridWrapper grid={grid}>
-        {cells.map((_, i) => (
-          // 두더지가 있으면 클릭 가능
-          <Cell key={i} onClick={i === activeIndex ? handleMoleClick : undefined}>
-            {/* 두더지 보여주기 */}
-            {i === activeIndex &&
-              isPlaying &&
-              (cellType === "mole" ? (
-                <Mole src={moleImg} alt="두더지" />
-              ) : (
-                <Bomb src={bombImg} alt="폭탄" />
-              ))}
-          </Cell>
-        ))}
+        {cells.map((_, i) => {
+          // find 사용해서 배열에서 해당 index 찾기
+          const activeCell = activeCells.find((cell) => cell.index === i);
+
+          return (
+            <Cell
+              key={i}
+              onClick={
+                // type에 따라 다른 함수
+                activeCell?.type === "bomb"
+                  ? () => handleBombClick(i)
+                  : activeCell?.type === "mole"
+                    ? () => handleMoleClick(i)
+                    : undefined
+              }
+            >
+              {activeCell && isPlaying && (
+                // type에 따라 다른 이미지
+                <Character
+                  src={
+                    activeCell.type === "mole"
+                      ? moleImg
+                      : activeCell.type === "mole-hit"
+                        ? moleHitImg
+                        : bombImg
+                  }
+                  alt={activeCell.type}
+                />
+              )}
+            </Cell>
+          );
+        })}
       </GridWrapper>
     </GameBoardWrapper>
   );
@@ -118,13 +138,7 @@ const Cell = styled.div`
   overflow: hidden;
 `;
 
-const Mole = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 50%;
-`;
-const Bomb = styled.img`
+const Character = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
