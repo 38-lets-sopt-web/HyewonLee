@@ -28,10 +28,12 @@ const ResultCard = styled.section`
 
 const SuccessLabel = styled.p`
   color: ${color.green};
+  font-weight: ${font.bold};
 `;
 
 const FailLabel = styled.p`
   color: ${color.red};
+  font-weight: ${font.bold};
 `;
 
 const ResultValue = styled.p`

@@ -3,7 +3,6 @@ export const font = {
   primary: '"Noto Sans KR", sans-serif',
 
   // font weight
-  light: 300,
   regular: 400,
   medium: 500,
   bold: 700,
@@ -17,5 +16,5 @@ export const color = {
   bg: "#5e3b27",
   lightbrown: "#967c6c",
   green: "#209e10",
-  red: "#f59a9a",
+  red: "#c43427",
 };

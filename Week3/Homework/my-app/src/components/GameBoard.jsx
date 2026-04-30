@@ -5,7 +5,6 @@ import { LEVEL } from "../constants/config";
 import moleImg from "../assets/mole.jpg";
 import moleHitImg from "../assets/mole-hit.jpg";
 import bombImg from "../assets/bomb.jpg";
-import { useState } from "react";
 
 export default function GameBoard({
   isPlaying,

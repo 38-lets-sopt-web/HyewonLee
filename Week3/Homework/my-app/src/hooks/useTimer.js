@@ -3,7 +3,7 @@ import { LEVEL } from "../constants/config";
 import { useEffect, useState } from "react";
 
 export function useTimer(isPlaying, setIsPlaying, level, setLevel) {
-  const [timeLeft, setTimeLeft] = useState(() => LEVEL["Lv1"].time);
+  const [timeLeft, setTimeLeft] = useState(LEVEL["Lv1"].time);
 
   // 레벨 바뀌면 타이머 리셋
   const handleLevelChange = (newLevel) => {
