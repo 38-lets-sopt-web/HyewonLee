@@ -34,7 +34,7 @@ export function useMoles(isPlaying, level, setScore, setSuccessCount, setFailCou
   const handleMoleClick = (index) => {
     setScore((prev) => prev + 1);
     setSuccessCount((prev) => prev + 1);
-    setMessage("두더지 잡았다! 🎉");
+    setMessage("잡았다 너!");
 
     setActiveCells((prev) =>
       prev.map((cell) => (cell.index === index ? { ...cell, type: "mole-hit" } : cell)),
@@ -55,13 +55,13 @@ export function useMoles(isPlaying, level, setScore, setSuccessCount, setFailCou
   const handleBombClick = (index) => {
     setScore((prev) => prev - 1);
     setFailCount((prev) => prev + 1);
-    setMessage("땡! 💣");
+    setMessage("땡!!!");
 
     setActiveCells((prev) => prev.filter((cell) => cell.index !== index));
 
     setTimeout(() => {
       setMessage("");
-    }, 1500);
+    }, 700);
   };
 
   return { activeCells, setActiveCells, handleMoleClick, handleBombClick };

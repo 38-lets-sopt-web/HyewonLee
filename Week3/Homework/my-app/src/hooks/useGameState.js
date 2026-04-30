@@ -1,4 +1,4 @@
-// 게임 상태 관리
+// 게임 상태 관리(state 모음)
 import { useState } from "react";
 
 export function useGameState() {

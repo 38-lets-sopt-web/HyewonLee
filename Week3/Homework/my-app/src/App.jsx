@@ -49,6 +49,7 @@ function App() {
             align-items: center;
             justify-content: space-between;
             padding: 1.5rem;
+            text-align: center;
           }
         `}
       />

@@ -10,7 +10,7 @@ export function useScore() {
     scoreRef.current = score;
   }, [score]);
 
-  // 초기화
+  // score 초기화
   const resetScore = () => {
     setScore(0);
     setSuccessCount(0);

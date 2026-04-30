@@ -1,14 +1,27 @@
 import styled from "@emotion/styled";
 import { font, color } from "../styles/tokens";
+import { useState } from "react";
+import { getSortedRank } from "../utils/rank";
+import { clearScores } from "../utils/storage";
 
 export default function RankTab() {
+  const [scores, setScores] = useState(getSortedRank());
+
+  // 기록 초기화
+  const handleReset = () => {
+    if (window.confirm("기록을 초기화하시겠습니까?")) {
+      clearScores();
+      // 빈 배열로 만들고 리렌더링
+      setScores([]);
+    }
+  };
   return (
     <RankTabWrapper>
       <RankBoard>
         {/* Ranking 헤더 */}
         <RankHeader>
           <h2>랭킹 보드</h2>
-          <ResetBtn>기록 초기화</ResetBtn>
+          <ResetBtn onClick={handleReset}>기록 초기화</ResetBtn>
         </RankHeader>
         {/* Ranking 표 */}
         <RankTable>
@@ -20,7 +33,22 @@ export default function RankTab() {
               <th>기록 시각</th>
             </tr>
           </thead>
-          <tbody>{/* 데이터 불러오기 */}</tbody>
+          <tbody>
+            {scores.length === 0 ? (
+              <tr>
+                <td colSpan={4}>기록이 없습니다</td>
+              </tr>
+            ) : (
+              scores.map((record, i) => (
+                <tr key={i}>
+                  <td>{i + 1}</td>
+                  <td>{record.level}</td>
+                  <td>{record.score}</td>
+                  <td>{new Date(record.timestamp).toLocaleString("ko-KR")}</td>
+                </tr>
+              ))
+            )}
+          </tbody>
         </RankTable>
       </RankBoard>
     </RankTabWrapper>
@@ -59,8 +87,10 @@ const RankTable = styled.table`
   thead {
     background-color: ${color.bg};
   }
-  th {
+  th,
+  td {
     padding: 0.5rem;
     font-size: ${font.small};
+    text-align: center;
   }
 `;

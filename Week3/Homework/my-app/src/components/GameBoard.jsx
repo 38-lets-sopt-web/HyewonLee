@@ -14,6 +14,7 @@ export default function GameBoard({
   activeCells,
   handleMoleClick,
   handleBombClick,
+  resetGame,
 }) {
   // 레벨에 맞는 grid 크기
   const { grid } = LEVEL[level];
@@ -33,7 +34,14 @@ export default function GameBoard({
           <GameBtn isPlaying={false} isActive={!isPlaying} onClick={() => setIsPlaying(true)}>
             시작
           </GameBtn>
-          <GameBtn isPlaying={true} isActive={isPlaying} onClick={() => setIsPlaying(false)}>
+          <GameBtn
+            isPlaying={true}
+            isActive={isPlaying}
+            onClick={() => {
+              setIsPlaying(false);
+              resetGame();
+            }}
+          >
             중단
           </GameBtn>
         </BtnRow>
