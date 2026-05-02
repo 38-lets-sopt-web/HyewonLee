@@ -1,9 +1,11 @@
 // UserCard.jsx
+import { Link } from "react-router";
 
 const UserCard = ({ user }) => {
   const { name, part } = user;
   return (
-    <div
+    <Link
+      to={`/users/${user.id}`}
       style={{
         display: "block",
         padding: "1rem",
@@ -17,7 +19,7 @@ const UserCard = ({ user }) => {
     >
       <h3 style={{ margin: "0 0 0.5rem 0" }}>{name}</h3>
       <p style={{ margin: 0, fontSize: "0.9rem", color: "#666" }}>{part}</p>
-    </div>
+    </Link>
   );
 };
 
