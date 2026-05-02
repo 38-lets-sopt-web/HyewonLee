@@ -1,0 +1,14 @@
+:root {
+  --color-bg: #f8f6f6;
+  --color-black: #111111;
+  --color-grey: #7a7a7a;
+  --color-lightgrey: #e0e0e0;
+  --color-white: #ffffff;
+  --color-th: #fcf2f7;
+  --color-tf: #d2d2d2;
+  --color-income: #34a7ff;
+  --color-expense: #ff2b27;
+
+  --font-family: "Noto Sans KR", sans-serif;
+  --radius: 8px;
+}

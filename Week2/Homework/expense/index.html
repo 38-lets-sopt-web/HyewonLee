@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가계부</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header>
+      <button type="button" class="reload">💵</button>
+      <h3>이혜원의 가계부</h3>
+      <p>SOPT 38th WEB</p>
+    </header>
+
+    <div class="container">
+      <!-- 검색 필터 -->
+      <section class="filter">
+        <h3>검색 필터</h3>
+        <form id="filter-form">
+          <div class="filter-title">
+            <label for="search-title">제목</label>
+            <input type="text" name="title" id="search-title" placeholder="내역을 입력하세요" />
+          </div>
+
+          <div class="filter-dropdown">
+            <label for="search-type">유형</label>
+            <select id="search-type" name="type">
+              <option value="all">전체</option>
+              <option value="income">수입</option>
+              <option value="expense">지출</option>
+            </select>
+            <label for="search-category">카테고리</label>
+            <select id="search-category" name="category">
+              <option value="all">전체</option>
+              <option value="food">식비</option>
+              <option value="salary">월급</option>
+              <option value="culture">문화</option>
+              <option value="transport">교통</option>
+              <option value="living">생활</option>
+              <option value="other">기타</option>
+            </select>
+            <label for="search-payment">결제수단</label>
+            <select id="search-payment" name="payment">
+              <option value="all">전체</option>
+              <option value="credit">신용카드</option>
+              <option value="debit">체크카드</option>
+              <option value="cash">현금</option>
+            </select>
+          </div>
+          <div class="filter-btn">
+            <button type="submit">적용</button>
+            <button type="reset">초기화</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- 표 -->
+      <section class="expense-table">
+        <div class="table-controls">
+          <select id="filter-date">
+            <option value="date-descending">날짜 내림차순</option>
+            <option value="date-ascending">날짜 오름차순</option>
+          </select>
+          <div>
+            <button id="select-del-btn">선택 삭제</button>
+            <button id="add-item">추가</button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <!-- 전체 헤더 체크박스 -->
+              <th scope="col"><input type="checkbox" name="chkAll" id="chkAll" /></th>
+              <th scope="col">제목</th>
+              <th scope="col">금액</th>
+              <th scope="col">날짜</th>
+              <th scope="col">카테고리</th>
+              <th scope="col">결제수단</th>
+            </tr>
+          </thead>
+          <tbody class="tbody-event">
+            <!-- 여기에 데이터 불러와져야!! -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">total</td>
+              <td id="total" colspan="3"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <!-- 내역 추가 모달 -->
+      <div id="add-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>내역 추가</h3>
+            <span id="close-add-modal" class="close-modal">&times;</span>
+          </div>
+          <form id="add-form">
+            <!-- 제목 -->
+            <div class="form-content">
+              <label for="add-title">제목</label>
+              <input type="text" name="title" id="add-title" placeholder="제목을 입력하세요" />
+            </div>
+
+            <!-- 유형과 지출 -->
+            <div class="add-form-row">
+              <div class="form-content">
+                <label for="add-type">유형</label>
+                <select id="add-type" name="type">
+                  <option value="income">수입 (+)</option>
+                  <option value="expense">지출 (-)</option>
+                </select>
+              </div>
+              <div class="form-content">
+                <label for="add-amount">금액 (숫자만)</label>
+                <input
+                  type="number"
+                  name="amount"
+                  id="add-amount"
+                  placeholder="금액을 입력하세요"
+                />
+              </div>
+            </div>
+
+            <!-- 날짜 -->
+            <div class="form-content">
+              <label for="add-date">날짜</label>
+              <input type="date" id="add-date" name="date" />
+            </div>
+
+            <!-- 카테고리와 결제수단 -->
+            <div class="add-form-row">
+              <div class="form-content">
+                <label for="add-category">카테고리</label>
+                <select id="add-category" name="category">
+                  <option value="">선택</option>
+                  <option value="food">식비</option>
+                  <option value="salary">월급</option>
+                  <option value="culture">문화</option>
+                  <option value="transport">교통</option>
+                  <option value="living">생활</option>
+                  <option value="other">기타</option>
+                </select>
+              </div>
+              <div class="form-content">
+                <label for="add-payment">결제수단</label>
+                <select id="add-payment" name="payment">
+                  <option value="">선택</option>
+                  <option value="credit">신용카드</option>
+                  <option value="debit">체크카드</option>
+                  <option value="cash">현금</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit">추가</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- 세부 내용 모달 -->
+      <div id="detail-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>항목 상세</h3>
+            <span id="close-detail-modal" class="close-modal">&times;</span>
+          </div>
+          <div class="detail-content">
+            <!-- 여기에 세부 내용이 불러와져야!! -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HTML 다 그려진 후 js 실행 -->
+    <script type="module" src="./js/data.js"></script>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
