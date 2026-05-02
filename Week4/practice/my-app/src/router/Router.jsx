@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     Component: Home,
   },
   {
-    path: "/member/:name",
+    path: "/user/:id",
     Component: MemberDetail,
   },
 ]);
