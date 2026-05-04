@@ -1,6 +1,6 @@
 import * as styles from "./Header.css";
 
-const Header = () => {
+export function Header() {
   return (
     <header className={styles.header}>
       <div>
@@ -14,6 +14,6 @@ const Header = () => {
       </nav>
     </header>
   );
-};
+}
 
 export default Header;

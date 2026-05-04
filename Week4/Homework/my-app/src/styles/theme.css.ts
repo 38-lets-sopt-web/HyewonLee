@@ -3,16 +3,18 @@ import { tokens } from "./tokens.css";
 
 export const vars = createGlobalTheme(":root", {
   color: {
-    pageBg: tokens.color.gray100,
-    partBg: tokens.color.gray100,
+    pageBg: tokens.color.blue100,
+    partBg: tokens.color.blue100,
     btnBg: tokens.color.blue200,
     btnActiveBg: tokens.color.blue400,
-    textPrimary: tokens.color.gray800,
+    btnHoverBg: tokens.color.blue600,
+    textPrimary: tokens.color.blue700,
     textSub: tokens.color.gray300,
     textPlaceholder: tokens.color.gray500,
     textAccent: tokens.color.blue400,
-    headerBg: tokens.color.gray800,
+    headerBg: tokens.color.blue700,
     border: tokens.color.gray300,
+    borderFocus: tokens.color.blue700,
     white: tokens.color.white,
     black: tokens.color.black,
   },

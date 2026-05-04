@@ -5,13 +5,14 @@ export const tokens = {
     white: "#ffffff",
     black: "#000000",
 
-    blue400: "#00BDFF",
+    blue100: "#e6f9fc",
     blue200: "#bdecfc",
+    blue400: "#00BDFF",
+    blue600: "#028ebf",
+    blue700: "#016991",
 
-    gray100: "#e6e9eb",
     gray300: "#d1d5db",
     gray500: "#9ca3af",
-    gray800: "#363f45",
   },
   fontSize: {
     sm: rem(14),
