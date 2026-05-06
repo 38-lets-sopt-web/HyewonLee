@@ -1,11 +1,8 @@
-import { SignUp } from "./pages/SignUp/SignUp";
+import { RouterProvider } from "react-router/dom";
+import { router } from "./router/Router";
 
 function App() {
-  return (
-    <>
-      <SignUp />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

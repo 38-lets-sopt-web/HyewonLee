@@ -56,16 +56,11 @@ globalStyle("input::placeholder", {
 });
 
 globalStyle("button", {
-  cursor: "pointer",
   border: "none",
   background: "none",
   padding: vars.spacing.sm,
   borderRadius: vars.borderRadius.sm,
   fontWeight: vars.fontWeight.sb,
-});
-
-globalStyle("button:hover", {
-  backgroundColor: vars.color.btnHoverBg,
 });
 
 globalStyle("a", {

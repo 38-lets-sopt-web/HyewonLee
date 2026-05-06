@@ -1,11 +1,12 @@
 import { Input } from "@/shared/components/Input/Input";
 import { useSignup } from "./hooks/useSignUp";
 import { SIGNUP_FIELDS } from "@/shared/constants/InputFields";
-import { inputCol, button } from "@/shared/components/Input/Input.css";
+import { inputCol, button, activeButton } from "@/shared/components/Input/Input.css";
 import { signup, main, pclass } from "./SignUp.css";
+import { Link } from "react-router";
 
 export function SignUp() {
-  const { formValues, handleChange, onSubmit } = useSignup();
+  const { formValues, handleChange, onSubmit, isValid } = useSignup();
 
   return (
     <main className={main}>
@@ -24,12 +25,12 @@ export function SignUp() {
             />
           ))}
         </div>
-        <button className={button} type="submit">
+        <button className={isValid ? activeButton : button} type="submit">
           회원가입
         </button>
         <p className={pclass}>
           이미 계정이 있나요?&nbsp;
-          <a href="/login">로그인으로 돌아가기</a>
+          <Link to="/login">로그인으로 돌아가기</Link>
         </p>
       </form>
     </main>

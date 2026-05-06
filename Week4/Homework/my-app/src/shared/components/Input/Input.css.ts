@@ -14,6 +14,17 @@ export const inputWrapper = style({
 });
 
 export const button = style({
+  backgroundColor: vars.color.btnBg,
+  color: vars.color.white,
+});
+
+export const activeButton = style({
+  cursor: "pointer",
   backgroundColor: vars.color.btnActiveBg,
   color: vars.color.white,
+  selectors: {
+    "&:hover": {
+      backgroundColor: vars.color.btnHoverBg,
+    },
+  },
 });

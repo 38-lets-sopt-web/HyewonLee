@@ -1,11 +1,11 @@
 import { Input } from "@/shared/components/Input/Input";
 import { useLogin } from "./hooks/useLogin";
 import { LOGIN_FIELDS } from "@/shared/constants/InputFields";
-import { inputCol, button } from "@/shared/components/Input/Input.css";
+import { inputCol, button, activeButton } from "@/shared/components/Input/Input.css";
 import { login, main } from "./Login.css";
 
 export function Login() {
-  const { formValues, handleChange, onSubmit } = useLogin();
+  const { formValues, handleChange, onSubmit, isValid } = useLogin();
 
   return (
     <main className={main}>
@@ -24,7 +24,7 @@ export function Login() {
             />
           ))}
         </div>
-        <button className={button} type="submit">
+        <button className={isValid ? activeButton : button} type="submit">
           로그인
         </button>
         <a href="/signup">회원가입</a>

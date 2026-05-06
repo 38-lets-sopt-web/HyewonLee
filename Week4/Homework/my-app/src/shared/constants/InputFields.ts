@@ -1,12 +1,6 @@
-export const PART_OPTIONS = [
-  { value: "ios", label: "iOS" },
-  { value: "android", label: "안드로이드" },
-  { value: "web", label: "웹" },
-] as const;
-
 export const LOGIN_FIELDS = [
   {
-    key: "id",
+    key: "loginId",
     label: "아이디",
     placeholder: "아이디를 입력해주세요.",
     type: "text",
@@ -21,7 +15,7 @@ export const LOGIN_FIELDS = [
 
 export const SIGNUP_FIELDS = [
   {
-    key: "id",
+    key: "loginId",
     label: "아이디",
     placeholder: "아이디를 입력해주세요.",
     type: "text",
