@@ -14,5 +14,5 @@ export function useForm<T extends Record<string, string>>(initialValues: T) {
     onSubmit();
   };
 
-  return { formValues, handleChange, handleSubmit, isValid };
+  return { formValues, handleChange, handleSubmit, isValid, setFormValues };
 }

@@ -12,8 +12,8 @@ export function useLogin() {
   const onSubmit = handleSubmit(async () => {
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signin`, formValues);
-      localStorage.setItem("loginId", data.loginId);
-      navigate("/mypage");
+      localStorage.setItem("userId", data.data.userId);
+      navigate("/mypage/myinfo");
     } catch {
       alert("로그인에 실패했습니다.");
     }

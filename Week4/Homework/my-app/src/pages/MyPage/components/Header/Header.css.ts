@@ -23,4 +23,14 @@ export const nav = style({
 
 export const navItem = style({
   cursor: "pointer",
+  color: "inherit",
+  textDecoration: "none",
+  fontWeight: "normal",
+});
+
+export const navItemActive = style({
+  cursor: "pointer",
+  fontWeight: vars.fontWeight.bold,
+  color: "inherit",
+  textDecoration: "none",
 });

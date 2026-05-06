@@ -57,3 +57,24 @@ export const SIGNUP_FIELDS = [
     type: "text",
   },
 ] as const;
+
+export const INFO_FIELDS = [
+  {
+    key: "name",
+    label: "이름",
+    placeholder: "이름을 입력해주세요.",
+    type: "text",
+  },
+  {
+    key: "email",
+    label: "이메일",
+    placeholder: "이메일을 입력해주세요.",
+    type: "email",
+  },
+  {
+    key: "age",
+    label: "나이",
+    placeholder: "나이를 입력해주세요.",
+    type: "number",
+  },
+] as const;
