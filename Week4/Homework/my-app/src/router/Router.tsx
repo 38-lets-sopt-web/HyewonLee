@@ -3,7 +3,8 @@ import { Login } from "@pages/Login/Login";
 import { SignUp } from "@pages/SignUp/SignUp";
 import { MyPage } from "@/pages/MyPage/MyPage";
 import { MyInfo } from "@/pages/MyInfo/MyInfo";
-import { MemberList } from "@/pages/MemberList/MemberList";
+import { MemberView } from "@/pages/MemberView/MemberView";
+import { MemberDetail } from "@/pages/MemberView/MemberDetail/MemberDetail";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,8 @@ export const router = createBrowserRouter([
     Component: MyPage,
     children: [
       { path: "myinfo", Component: MyInfo },
-      { path: "members", Component: MemberList },
+      { path: "members", Component: MemberView },
+      { path: "members/:id", Component: MemberDetail },
     ],
   },
 ]);
