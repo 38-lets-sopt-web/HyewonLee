@@ -61,7 +61,6 @@ globalStyle("button", {
   background: "none",
   padding: vars.spacing.sm,
   borderRadius: vars.borderRadius.sm,
-  color: vars.color.white,
   fontWeight: vars.fontWeight.sb,
 });
 

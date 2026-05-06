@@ -15,4 +15,5 @@ export const inputWrapper = style({
 
 export const button = style({
   backgroundColor: vars.color.btnActiveBg,
+  color: vars.color.white,
 });
