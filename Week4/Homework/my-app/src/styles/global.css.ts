@@ -18,6 +18,10 @@ globalStyle("body", {
   WebkitFontSmoothing: "antialiased",
 });
 
+globalStyle("body::-webkit-scrollbar", {
+  display: "none",
+});
+
 globalStyle("main", {
   display: "flex",
   flexDirection: "column",

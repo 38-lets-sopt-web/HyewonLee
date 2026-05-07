@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export interface Member {
@@ -8,20 +8,13 @@ export interface Member {
 }
 
 export function useMemberList() {
-  const [members, setMembers] = useState<Member[]>([]);
-
-  useEffect(() => {
-    const fetchMembers = async () => {
-      try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
-        setMembers(data.data.users);
-      } catch {
-        alert("멤버 목록을 불러오지 못했습니다.");
-      }
-    };
-
-    fetchMembers();
-  }, []);
+  const { data: members } = useSuspenseQuery<Member[]>({
+    queryKey: ["members"],
+    queryFn: async () => {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
+      return data.data.users;
+    },
+  });
 
   return { members };
 }

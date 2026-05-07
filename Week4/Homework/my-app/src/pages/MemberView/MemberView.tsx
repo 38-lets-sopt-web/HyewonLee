@@ -4,6 +4,8 @@ import { button, activeButton } from "@/shared/components/Input/Input.css";
 import { InfoItem } from "@/shared/components/InfoItem/InfoItem";
 import { useMember } from "./hooks/useMember";
 import { MemberList } from "./components/MemberList/MemberList";
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 
 export function MemberView() {
   const { searchId, setSearchId, result, handleSearch } = useMember();
@@ -43,7 +45,11 @@ export function MemberView() {
       </div>
 
       <div className={members}>
-        <MemberList />
+        <ErrorBoundary fallback={<div>멤버를 불러오지 못했습니다.</div>}>
+          <Suspense fallback={<div>멤버 불러오는 중...</div>}>
+            <MemberList />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </>
   );
