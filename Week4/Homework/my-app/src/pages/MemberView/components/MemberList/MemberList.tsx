@@ -1,6 +1,6 @@
 import { MemberCard } from "../MemberCard/MemberCard";
 import { ptext } from "../../MemberView.css";
-import { useMemberList } from "../../hooks/useMemberList";
+import { useMemberList } from "./hooks/useMemberList";
 import { cardList } from "./MemberList.css";
 
 export function MemberList() {

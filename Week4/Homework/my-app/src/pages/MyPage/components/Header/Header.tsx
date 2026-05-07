@@ -1,4 +1,4 @@
-import { useHeader } from "../../hooks/useHeader";
+import { useHeader } from "./hooks/useHeader";
 import { NavLink } from "react-router";
 import * as styles from "./Header.css";
 
