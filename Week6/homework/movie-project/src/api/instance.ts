@@ -7,6 +7,9 @@ const api = axios.create({
   params: {
     api_key: import.meta.env.VITE_API_KEY,
   },
+  headers: {
+    Authorization: `Bearer ${import.meta.env.VITE_API_READ_ACCESS_TOKEN}`,
+  },
 });
 
 export default api;
