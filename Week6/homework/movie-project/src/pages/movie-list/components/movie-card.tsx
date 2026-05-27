@@ -15,7 +15,7 @@ const MovieCard = ({
   vote_average,
 }: MovieCardProps) => {
   return (
-    <div className="rounded-sm bg-white w-55">
+    <div className="rounded-sm bg-white w-55 transition-transform hover:scale-103">
       <img
         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
         alt="posterImg"
