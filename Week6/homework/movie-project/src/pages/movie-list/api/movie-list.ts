@@ -1,4 +1,4 @@
-import api from "../../../api/instance";
+import api from "@/api/instance";
 
 interface Movie {
   id: number;

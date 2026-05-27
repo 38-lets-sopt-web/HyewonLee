@@ -1,4 +1,4 @@
-import api from "../../../api/instance";
+import api from "@/api/instance";
 
 // 영화 상세 정보
 export const getMovieDetail = async (movieId: number) => {

@@ -1,7 +1,5 @@
 const DetailPage = () => {
-  <>
-    <h3>Movie Explorer</h3>
-  </>;
+  return <>영화 상세 페이지</>;
 };
 
 export default DetailPage;
