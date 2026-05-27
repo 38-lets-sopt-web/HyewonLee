@@ -9,9 +9,10 @@
   /* color */
   --color-bg: #121212;
   --color-gray-800: #717171;
+  --color-red: #eb1a32;
 
   /* text */
-  --text-heading: 42px;
+  --text-heading: 34px;
   --text-heading--font-weight: 700;
 
   --text-title: 28px;
@@ -22,8 +23,4 @@
 
   --text-body-medium: 15px;
   --text-body-medium--font-weight: 400;
-}
-
-body {
-  @apply bg-bg;
 }
