@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { postRating } from "@/pages/movie-detail/api/movie-rating";
+import { postRating, deleteRating } from "@/pages/movie-detail/api/movie-rating";
 
 interface MovieRatingFormProps {
   id: number;
@@ -17,6 +17,15 @@ const MovieRatingForm = ({ id, currentRating, guestSessionId }: MovieRatingFormP
     mutationFn: () => postRating(id, guestSessionId, Number(rating)),
     onSuccess: () => {
       setSuccessMessage("별점이 저장되었습니다!");
+      queryClient.invalidateQueries({ queryKey: ["ratedMovies", guestSessionId] });
+    },
+  });
+
+  const { mutate: deleteRatingMutate } = useMutation({
+    mutationFn: () => deleteRating(id, guestSessionId),
+    onSuccess: () => {
+      setSuccessMessage("별점이 삭제되었습니다!");
+      setRating("");
       queryClient.invalidateQueries({ queryKey: ["ratedMovies", guestSessionId] });
     },
   });
@@ -56,6 +65,7 @@ const MovieRatingForm = ({ id, currentRating, guestSessionId }: MovieRatingFormP
           별점 저장
         </button>
         <button
+          onClick={() => deleteRatingMutate()}
           className="bg-white border border-black/20 text-body-medium rounded-md w-25 py-1"
           type="submit"
         >
