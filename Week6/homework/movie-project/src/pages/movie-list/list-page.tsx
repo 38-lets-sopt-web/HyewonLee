@@ -33,7 +33,7 @@ const ListPage = () => {
         <h3 className="text-primary text-heading">🇲 🇴 🇻 🇮 🇪 &nbsp; 🇪 🇽 🇵 🇱 🇴 🇷 🇪 🇷</h3>
         <FilterDropdown selected={selected} onSelect={setSelected} />
       </div>
-      <div className="grid grid-cols-4 gap-y-4">
+      <div className="grid grid-cols-4 gap-y-4 min-h-screen">
         {movies.map((movie) => (
           <MovieCard
             key={movie.id}
