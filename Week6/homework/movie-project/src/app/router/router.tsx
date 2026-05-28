@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { ROUTE_PATH } from "./path";
 import ListPage from "@/pages/movie-list/list-page";
-import Layout from "@/layout/layout";
+import Layout from "@/shared/layout/layout";
 
 export const router = createBrowserRouter([
   {

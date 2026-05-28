@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
+import "./shared/styles/index.css";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import App from "./App";
+import App from "./app/App";
 import { queryClient } from "@/shared/api/query-client";
 
 createRoot(document.getElementById("root")!).render(

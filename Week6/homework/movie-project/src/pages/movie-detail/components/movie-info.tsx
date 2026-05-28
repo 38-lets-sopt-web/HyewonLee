@@ -1,6 +1,7 @@
 import Chip from "./chip";
 import { IMAGE_BASE_URL } from "@/shared/api/instance";
 import InfoBox from "./info-box";
+import Image from "@/shared/components/image";
 
 interface MovieInfoProps {
   backdrop_path: string;
@@ -30,13 +31,13 @@ const MovieInfo = ({
 
   return (
     <div className="rounded-xl overflow-hidden bg-white">
-      <img
+      <Image
         src={`${IMAGE_BASE_URL}/original${backdrop_path}`}
         className="w-full h-90 object-cover object-center"
         alt="backdrop"
       />
       <div className="flex p-6 gap-6">
-        <img
+        <Image
           src={`${IMAGE_BASE_URL}/w500${poster_path}`}
           className="rounded-xl w-70"
           alt="poster"

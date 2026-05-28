@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import starImg from "@/assets/star.png";
+import starImg from "@/pages/movie-list/assets/star.png";
 import { IMAGE_BASE_URL } from "@/shared/api/instance";
+import Image from "@/shared/components/image";
 interface MovieCardProps {
   id: number;
   poster_path: string;
@@ -25,7 +26,7 @@ const MovieCard = ({
       onClick={() => navigate(`/movie/${id}`)}
       className="rounded-sm bg-white w-55 transition-transform hover:scale-103"
     >
-      <img
+      <Image
         src={`${IMAGE_BASE_URL}/w500${poster_path}`}
         alt="posterImg"
         className="w-full aspect-2/3"
