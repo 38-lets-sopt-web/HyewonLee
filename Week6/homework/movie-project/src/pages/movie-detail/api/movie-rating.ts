@@ -1,4 +1,4 @@
-import api from "@/api/instance";
+import api from "@/shared/api/instance";
 import type { MovieDetail } from "@/pages/movie-detail/api/movie-detail";
 
 interface RatingResponse {

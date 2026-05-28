@@ -1,4 +1,4 @@
-import { BASIC_INFO } from "@/constants/constants";
+import { BASIC_INFO } from "@/shared/constants/constants";
 
 export interface MovieBasicProps {
   original_title: string;

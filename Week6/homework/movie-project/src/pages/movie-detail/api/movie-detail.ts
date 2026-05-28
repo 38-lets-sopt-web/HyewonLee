@@ -1,4 +1,4 @@
-import api from "@/api/instance";
+import api from "@/shared/api/instance";
 
 export interface MovieDetail {
   id: number;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RATING_OPTIONS } from "@/constants/constants";
+import { RATING_OPTIONS } from "@/shared/constants/constants";
 
 interface FilterDropdownProps {
   selected: number | null;

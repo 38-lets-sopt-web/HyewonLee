@@ -1,5 +1,5 @@
 import Chip from "./chip";
-import { IMAGE_BASE_URL } from "@/api/instance";
+import { IMAGE_BASE_URL } from "@/shared/api/instance";
 import InfoBox from "./info-box";
 
 interface MovieInfoProps {

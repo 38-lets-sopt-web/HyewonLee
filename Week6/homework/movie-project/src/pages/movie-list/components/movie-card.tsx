@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import starImg from "@/assets/star.png";
-import { IMAGE_BASE_URL } from "@/api/instance";
+import { IMAGE_BASE_URL } from "@/shared/api/instance";
 interface MovieCardProps {
   id: number;
   poster_path: string;
