@@ -62,14 +62,14 @@ const MovieRatingForm = ({ id, currentRating, guestSessionId }: MovieRatingFormP
       <div className="flex gap-2">
         <button
           onClick={handleSave}
-          className="bg-black text-white text-body-medium rounded-md w-25 py-1"
+          className="bg-black text-white text-body-medium rounded-lg w-25 py-1 hover:bg-primary/40"
           type="submit"
         >
           별점 저장
         </button>
         <button
           onClick={() => deleteRatingMutate()}
-          className="bg-white border border-black/20 text-body-medium rounded-md w-25 py-1"
+          className="bg-white border border-black/20 text-body-medium rounded-lg w-25 py-1 hover:bg-primary/40"
           type="submit"
         >
           별점 삭제하기
