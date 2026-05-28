@@ -1,22 +1,34 @@
-const MovieRating = () => {
-  return (
-    <div className="flex flex-col rounded-xl bg-white p-6 gap-2 flex-1">
-      <h2 className="text-body-bold">별점 남기기</h2>
-      <p className="text-body-medium">0.5 ~ 10.0</p>
-      <input className="border border-black/10 rounded-md p-2" />
-      <div className="flex gap-2">
-        <button className="bg-black text-white text-body-medium rounded-md w-25 py-1" type="submit">
-          별점 저장
-        </button>
-        <button
-          className="bg-white border border-black/20 text-body-medium rounded-md w-25 py-1"
-          type="submit"
-        >
-          별점 삭제하기
-        </button>
-      </div>
-    </div>
-  );
+import { useQuery } from "@tanstack/react-query";
+import {
+  getGuestSessionWithCache,
+  getRatedMovies,
+  GUEST_SESSION_QUERY_KEY,
+} from "@/pages/movie-detail/api/movie-rating";
+import MovieRatingForm from "./movie-rating-form";
+
+interface MovieRatingProps {
+  id: number;
+}
+
+const MovieRating = ({ id }: MovieRatingProps) => {
+  const { data: sessionData } = useQuery({
+    queryKey: GUEST_SESSION_QUERY_KEY,
+    queryFn: getGuestSessionWithCache,
+  });
+
+  const guestSessionId = sessionData?.guest_session_id;
+
+  const { data: ratedData, isLoading: isRatingLoading } = useQuery({
+    queryKey: ["ratedMovies", guestSessionId],
+    queryFn: () => getRatedMovies(guestSessionId!),
+    enabled: !!guestSessionId,
+  });
+
+  if (isRatingLoading) return null;
+
+  const currentRating = ratedData?.results.find((movie) => movie.id === id)?.rating;
+
+  return <MovieRatingForm id={id} currentRating={currentRating} guestSessionId={guestSessionId!} />;
 };
 
 export default MovieRating;

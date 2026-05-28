@@ -6,7 +6,6 @@ export const IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
 const api = axios.create({
   baseURL: BASE_URL,
   params: {
-    api_key: import.meta.env.VITE_API_KEY,
     language: "ko-KR",
   },
   headers: {

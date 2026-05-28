@@ -44,7 +44,7 @@ const DetailPage = () => {
             budget={data.budget}
             revenue={data.revenue}
           />
-          <MovieRating />
+          <MovieRating id={data.id} />
         </div>
       </div>
     </>

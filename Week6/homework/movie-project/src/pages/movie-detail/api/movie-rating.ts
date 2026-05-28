@@ -18,6 +18,29 @@ interface RatedMoviesResponse {
   total_results: number;
 }
 
+interface GuestSessionResponse {
+  success: boolean;
+  guest_session_id: string;
+  expires_at: string;
+}
+
+export const GUEST_SESSION_QUERY_KEY = ["guestSession"] as const;
+
+// 게스트 세션 발급
+export const getGuestSession = async (): Promise<GuestSessionResponse> => {
+  const { data } = await api.get("/authentication/guest_session/new");
+  return data;
+};
+
+export const getGuestSessionWithCache = async (): Promise<GuestSessionResponse> => {
+  const stored = localStorage.getItem("guestSessionId");
+  if (stored) return { guest_session_id: stored, success: true, expires_at: "" };
+
+  const data = await getGuestSession();
+  localStorage.setItem("guestSessionId", data.guest_session_id);
+  return data;
+};
+
 // 영화 별점 매기기
 export const postRating = async (
   movieId: number,
@@ -29,6 +52,7 @@ export const postRating = async (
     { value: rating },
     {
       params: { guest_session_id: guestSessionId },
+      headers: { "Content-Type": "application/json;charset=utf-8" },
     },
   );
   return data;
@@ -36,8 +60,12 @@ export const postRating = async (
 
 // 별점을 매긴 영화 리스트 조회
 export const getRatedMovies = async (guestSessionId: string): Promise<RatedMoviesResponse> => {
-  const { data } = await api.get(`/guest_session/${guestSessionId}/rated/movies`);
-  return data;
+  try {
+    const { data } = await api.get(`/guest_session/${guestSessionId}/rated/movies`);
+    return data;
+  } catch {
+    return { page: 1, results: [], total_pages: 0, total_results: 0 };
+  }
 };
 
 // 영화 별점 삭제
