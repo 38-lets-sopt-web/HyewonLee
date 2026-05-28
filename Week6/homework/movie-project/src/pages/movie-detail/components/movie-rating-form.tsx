@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { postRating, deleteRating } from "@/pages/movie-detail/api/movie-rating";
-
+import z from "zod";
+import toast from "react-hot-toast";
 interface MovieRatingFormProps {
   id: number;
   currentRating: number | undefined;
@@ -30,14 +31,16 @@ const MovieRatingForm = ({ id, currentRating, guestSessionId }: MovieRatingFormP
     },
   });
 
+  const ratingSchema = z
+    .number()
+    .min(0.5, "0.5 이상 입력해주세요.")
+    .max(10, "10 이하로 입력해주세요.")
+    .multipleOf(0.5, "0.5 단위로 입력해주세요.");
+
   const handleSave = () => {
-    const value = Number(rating);
-    if (value < 0.5 || value > 10) {
-      alert("0.5에서 10 사이의 값을 입력해주세요.");
-      return;
-    }
-    if (value % 0.5 !== 0) {
-      alert("0.5 단위로 입력해주세요. (예: 7.0, 7.5, 8.0)");
+    const value = ratingSchema.safeParse(Number(rating));
+    if (!value.success) {
+      toast.error(value.error.issues[0].message);
       return;
     }
     saveRating();
