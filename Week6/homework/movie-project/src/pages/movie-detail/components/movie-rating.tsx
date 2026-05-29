@@ -18,17 +18,21 @@ const MovieRating = ({ id }: MovieRatingProps) => {
 
   const guestSessionId = sessionData?.guest_session_id;
 
-  const { data: ratedData, isLoading: isRatingLoading } = useQuery({
+  const { data: ratedData } = useQuery({
     queryKey: ["ratedMovies", guestSessionId],
     queryFn: () => getRatedMovies(guestSessionId!),
     enabled: !!guestSessionId,
   });
 
-  if (!guestSessionId || isRatingLoading) return null;
-
   const currentRating = ratedData?.results.find((movie) => movie.id === id)?.rating;
 
-  return <MovieRatingForm id={id} currentRating={currentRating} guestSessionId={guestSessionId!} />;
+  return (
+    <MovieRatingForm
+      id={id}
+      currentRating={currentRating}
+      guestSessionId={guestSessionId ?? ""}
+    />
+  );
 };
 
 export default MovieRating;

@@ -10,12 +10,14 @@ interface MovieRatingFormProps {
 }
 
 const MovieRatingForm = ({ id, currentRating, guestSessionId }: MovieRatingFormProps) => {
-  const [rating, setRating] = useState(currentRating ? String(currentRating) : "");
+  const [userInput, setUserInput] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState("");
   const queryClient = useQueryClient();
 
+  const ratingValue = userInput ?? currentRating?.toString() ?? "";
+
   const { mutate: saveRating } = useMutation({
-    mutationFn: () => postRating(id, guestSessionId, Number(rating)),
+    mutationFn: () => postRating(id, guestSessionId, Number(ratingValue)),
     onSuccess: () => {
       setSuccessMessage("별점이 저장되었습니다!");
       queryClient.invalidateQueries({ queryKey: ["ratedMovies", guestSessionId] });
@@ -26,7 +28,7 @@ const MovieRatingForm = ({ id, currentRating, guestSessionId }: MovieRatingFormP
     mutationFn: () => deleteRating(id, guestSessionId),
     onSuccess: () => {
       setSuccessMessage("별점이 삭제되었습니다!");
-      setRating("");
+      setUserInput("");
       queryClient.invalidateQueries({ queryKey: ["ratedMovies", guestSessionId] });
     },
   });
@@ -38,7 +40,7 @@ const MovieRatingForm = ({ id, currentRating, guestSessionId }: MovieRatingFormP
     .multipleOf(0.5, "0.5 단위로 입력해주세요.");
 
   const handleSave = () => {
-    const value = ratingSchema.safeParse(Number(rating));
+    const value = ratingSchema.safeParse(Number(ratingValue));
     if (!value.success) {
       toast.error(value.error.issues[0].message);
       return;
@@ -52,9 +54,9 @@ const MovieRatingForm = ({ id, currentRating, guestSessionId }: MovieRatingFormP
       <p className="text-body-medium">0.0 ~ 10.0</p>
       <input
         type="number"
-        value={rating}
-        onChange={(e) => setRating(e.target.value)}
-        placeholder={currentRating ? String(currentRating) : "별점을 입력해주세요."}
+        value={ratingValue}
+        onChange={(e) => setUserInput(e.target.value)}
+        placeholder="별점을 입력해주세요."
         min={0}
         max={10}
         className="border border-black/10 rounded-md p-2"
