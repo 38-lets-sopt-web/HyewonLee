@@ -24,7 +24,7 @@ const MovieRating = ({ id }: MovieRatingProps) => {
     enabled: !!guestSessionId,
   });
 
-  if (isRatingLoading) return null;
+  if (!guestSessionId || isRatingLoading) return null;
 
   const currentRating = ratedData?.results.find((movie) => movie.id === id)?.rating;
 
