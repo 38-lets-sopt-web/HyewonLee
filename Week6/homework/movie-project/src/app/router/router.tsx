@@ -5,6 +5,7 @@ import Layout from "@/shared/layout/layout";
 
 export const router = createBrowserRouter([
   {
+    HydrateFallback: () => null,
     Component: Layout,
     children: [
       {

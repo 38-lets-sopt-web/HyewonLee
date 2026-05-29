@@ -37,7 +37,7 @@ const MovieCard = ({
         <p className="text-body-bold flex">
           <img src={starImg} alt="star" className="w-7 h-7 -mt-1" /> {vote_average.toFixed(1)}
         </p>
-        <p className="text-body-medium line-clamp-4">{overview}</p>
+        <p className="text-body-medium line-clamp-4">{overview || "줄거리 정보가 없습니다."}</p>
       </div>
     </div>
   );
