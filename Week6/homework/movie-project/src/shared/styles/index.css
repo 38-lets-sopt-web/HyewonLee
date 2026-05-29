@@ -1,0 +1,39 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@1,300&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* font */
+  --font-sans: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+
+  /* color */
+  --color-bg: #121212;
+  --color-gray-800: #717171;
+  --color-primary: #eb1a32;
+
+  /* text */
+  --text-heading: 34px;
+  --text-heading--font-weight: 700;
+
+  --text-title: 28px;
+  --text-title--font-weight: 700;
+
+  --text-body-bold: 15px;
+  --text-body-bold--font-weight: 700;
+
+  --text-body-medium: 15px;
+  --text-body-medium--font-weight: 400;
+}
+
+@keyframes skeletonGradientWave {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+@utility animate-skeleton-wave {
+  border-radius: 4px;
+  background: linear-gradient(100deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  background-size: 200% 100%;
+  animation: 1.7s skeletonGradientWave linear infinite;
+}

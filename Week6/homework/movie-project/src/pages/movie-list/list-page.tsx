@@ -1,0 +1,54 @@
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { getMovies } from "@/pages/movie-list/api/movie-list";
+import MovieCard from "@/pages/movie-list/components/movie-card";
+import FilterDropdown from "./components/filter-dropdown";
+import { useEffect, useRef, useState } from "react";
+
+const ListPage = () => {
+  const [selected, setSelected] = useState<number | null>(null);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+    queryKey: ["movies", "infinite", selected],
+    queryFn: ({ pageParam }) => getMovies(pageParam, selected),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.page < lastPage.total_pages) return lastPage.page + 1;
+      return undefined;
+    },
+  });
+
+  const movies = data?.pages.flatMap((page) => page.results) ?? [];
+  const observerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) fetchNextPage();
+    });
+    if (observerRef.current) observer.observe(observerRef.current);
+    return () => observer.disconnect();
+  }, [hasNextPage, fetchNextPage, isFetchingNextPage]);
+
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex justify-between items-center">
+        <h3 className="text-primary text-heading">🇲 🇴 🇻 🇮 🇪 &nbsp; 🇪 🇽 🇵 🇱 🇴 🇷 🇪 🇷</h3>
+        <FilterDropdown selected={selected} onSelect={setSelected} />
+      </div>
+      <div className="grid grid-cols-4 gap-y-4 min-h-screen">
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            id={movie.id}
+            poster_path={movie.poster_path}
+            title={movie.title}
+            release_date={movie.release_date}
+            overview={movie.overview}
+            vote_average={movie.vote_average}
+          />
+        ))}
+      </div>
+      <div ref={observerRef} className="h-4" />
+    </div>
+  );
+};
+
+export default ListPage;
